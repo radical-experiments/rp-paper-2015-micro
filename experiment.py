@@ -38,7 +38,7 @@ RESOURCES = {'local' : {
              'stampede' : {
                  'resource' : 'xsede.stampede',
                  'project'  : 'TG-MCB090174' ,
-                 'queue'    : 'development',
+                 'queue'    : 'normal',
                  'schema'   : None,
                  },
              
@@ -120,7 +120,7 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 #------------------------------------------------------------------------------
 #
 def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config, 
-        scheduler):
+        scheduleri, queue=None):
 
     # Create a new session. No need to try/except this: if session creation
     # fails, there is not much we can do anyways...
@@ -141,11 +141,14 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
 
         for resource in resources:
 
+            if not queue: 
+                queue = RESOURCES[resource]['queue']
+
             pdesc = rp.ComputePilotDescription()
             pdesc.resource      = RESOURCES[resource]['resource']
             pdesc.cores         = n_cores
             pdesc.project       = RESOURCES[resource]['project']
-            pdesc.queue         = RESOURCES[resource]['queue']
+            pdesc.queue         = queue
             pdesc.runtime       = runtime
             pdesc.cleanup       = False
             pdesc.access_schema = RESOURCES[resource]['schema']
@@ -230,6 +233,7 @@ if __name__ == "__main__":
     parser.add_option('-a', '--agent',     dest='agent')
     parser.add_option('-r', '--resources', dest='resources')
     parser.add_option('-s', '--scheduler', dest='scheduler')
+    parser.add_option('-q', '--queue',     dest='queue')
     
     options, args = parser.parse_args ()
     
@@ -240,6 +244,7 @@ if __name__ == "__main__":
     load      = options.load
     agent     = options.agent
     scheduler = options.scheduler
+    queue     = options.queue
 
     
     if   scheduler == 'direct'     : scheduler = rp.SCHED_DIRECT
@@ -268,7 +273,7 @@ if __name__ == "__main__":
     runtime = int(runtime)
 
     sid = run_experiment (n_cores, n_units, resources, runtime, cu_load,
-            agent_config, scheduler)
+            agent_config, scheduler, queue)
 
     print "session id: %s" % sid
 

@@ -3,31 +3,35 @@
 # list of components we want to benchmark.  For each component, we will create
 # a config which configures the blowup mechanism to load just that component.
 # We will then run that config repeatedly (for stats) and collect the profles.
-COMPONENTS='staging_input scheduling execution staging_output'
+COMPONENTS='agent staging_input scheduling execution staging_output update'
 
 # number of repetitions
 REPS=3
 
 # target resource
-RESOURCE='xsede.stampede'
+RESOURCE='stampede'
 
 # compute unit load
 CU_LOAD='sleep_%s.json'
 
+# experiment sizes
+SIZES="128:development 512:development 1024:normal"
+
+# number of workers
+WORKERS="1 4 8"
+
 # fixed parameters
-N_CORES=8
-N_UNITS=4
-RUNTIME=10
+RUNTIME=30
 
 mkdir -p "data/"
 mkdir -p 'log/'
 
 # create 10^[246] byte sized dummy files for staging
-for s in 1 1K 1M
+for d in 1 1K 1M
 do
-   if ! test -f /tmp/input_$s.dat
+   if ! test -f /tmp/input_$d.dat
    then
-       dd if=/dev/urandom of=/tmp/input_$s.dat count=$s iflag=count_bytes
+       dd if=/dev/urandom of=/tmp/input_$d.dat count=$d iflag=count_bytes
    fi
 done
 
@@ -35,36 +39,62 @@ done
 for c in $COMPONENTS
 do
 
-    for s in 1 1K 1M
+    for tmp in $SIZES
     do
 
-        i=0
-        while ! test $i = "$REPS"
+        s=`echo $tmp | cut -f 1 -d :`
+        q=`echo $tmp | cut -f 2 -d :`
+
+        for w in $WORKERS
         do
-            rm -rf $HOME/.saga/adaptors/shell_job/
 
-            i=$((i+1))
-            exp="${c}_${RESOURCE}_$s_$i"
-            log="log/$exp.log"
-            load=`printf "$CU_LOAD" $s`
+            cat agent_config.tmpl | sed -e "s/###$c###/$s/g" \
+                                  | sed -e "s/###worker###/$w/g" \
+                                  | sed -e "s/###.*###/1/g" \
+                                  > agent_config.json
+            # diff agent_config.tmpl  agent_config.json
 
-            python experiment.py   \
-                -a "agent_$c.json" \
-                -c "$N_CORES"      \
-                -u "$N_UNITS"      \
-                -t "$RUNTIME"      \
-                -r "$RESOURCE"     \
-                -l "$load"         \
-                -e "$exp"          \
-                | tee "$log" 
+        
+            for d in 1 1K 1M
+            do
+        
+                i=0
+                while ! test $i = "$REPS"
+                do
+                    rm -rf $HOME/.saga/adaptors/shell_job/
+        
+                    i=$((i+1))
+                    exp="${c}_${RESOURCE}_${s}_${d}_${w}_${i}"
+                    log="log/$exp.log"
+                    load=`printf "$CU_LOAD" $d`
 
-            sid=`grep 'session id:' $log | tail -n 1 | cut -f 2 -d :`
-            sid=`echo $sid` # trim white spaces
+                    if test -f "$log"
+                    then
+                        echo "log exists - skipping experiment $exp"
 
-            printf "%-25s : $RESOURCE : $i : $sid\n" "$c" | tee -a experiment.sids
+                    else
+                        echo "running experiment $exp"
+        
+                        python experiment.py       \
+                            -a "agent_config.json" \
+                            -c "$s"                \
+                            -u "1"                 \
+                            -t "$RUNTIME"          \
+                            -r "$RESOURCE"         \
+                            -l "$load"             \
+                            -q "$q"                \
+                            | tee "$log" 
+        
+                        sid=`grep 'session id:' $log | tail -n 1 | cut -f 2 -d :`
+                        sid=`echo $sid` # trim white spaces
+        
+                        echo "$RESOURCE : $c : $s : $d : $w : $i : $sid" | tee -a experiment.sids
+        
+                        radicalpilot-stats -m prof -s "$sid" -p "data/"
 
-            radicalpilot-stats -m prof -s "$sid" -p "data/"
-
+                    fi
+                done
+            done
         done
     done
 done
