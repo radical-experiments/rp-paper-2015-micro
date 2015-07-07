@@ -1,0 +1,453 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "callbackhistory": [
+                {
+                    "state": "Launching", 
+                    "timestamp": 1435360754.43
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1435360786.496
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1435371854.233
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1435371864.26
+                }
+            ], 
+            "commands": [], 
+            "cores_per_node": 16, 
+            "description": {
+                "_config": {
+                    "blowup_factor": {
+                        "Agent": 1, 
+                        "ExecWatcher": 1, 
+                        "ExecWorker": 1, 
+                        "Scheduler": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1, 
+                        "execution_queue": 1024, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "drop_clones": {
+                        "Agent": 1, 
+                        "ExecWatcher": 1, 
+                        "ExecWorker": 1, 
+                        "Scheduler": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1, 
+                        "execution_queue": 1, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "number_of_workers": {
+                        "ExecWorker": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1
+                    }
+                }, 
+                "_iterpos": 0, 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 1024, 
+                "memory": null, 
+                "project": "TG-MCB090174", 
+                "queue": "normal", 
+                "resource": "xsede.stampede", 
+                "runtime": 30, 
+                "sandbox": null
+            }, 
+            "finished": 1435371863.591, 
+            "global_sandbox": "/work/01083/tg803521/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1435360753.427
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost//home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000//pilot_bootstrapper.sh).", 
+                    "timestamp": 1435360753.428
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/utils/radical.utils-0.28.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/).", 
+                    "timestamp": 1435360760.394
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/saga/saga-python-v0.28-16-gd61cef7-devel.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/).", 
+                    "timestamp": 1435360761.225
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.33-145-g688f18c-test-tmp-exec-dir.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/).", 
+                    "timestamp": 1435360764.03
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'TG-MCB090174', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/', 'Queue': 'normal', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 30, 'Arguments': ['-l pilot_bootstrapper.sh', \" -b 'radical.utils-0.28.tar.gz:saga-python-v0.28-16-gd61cef7-devel.tar.gz:radical.pilot-v0.33-145-g688f18c-test-tmp-exec-dir.tar.gz' -c '1024' -d '10' -g '/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments' -j 'SSH' -k 'MPIRUN_RSH' -l 'SLURM' -m '54.221.194.147:24242' -n 'am_experiments' -o 'POPEN' -p 'pilot.0000' -q 'CONTINUOUS' -r '30' -s 'rp.session.ip-10-184-31-85.merzky.016612.0074' -t 'multicore' -u 'create' -v 'local' -e 'module purge' -e 'module load TACC' -e 'module load cluster' -e 'module load Linux' -e 'module load mvapich2' -e 'module load python' -e 'module unload xalt' -e 'export TACC_DELETE_FILES=TRUE'\"], 'Error': 'agent.err', 'Output': 'agent.out', 'TotalCPUCount': 1024}", 
+                    "timestamp": 1435360769.345
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [slurm+ssh://stampede.tacc.utexas.edu/]-[5446440]", 
+                    "timestamp": 1435360786.184
+                }, 
+                {
+                    "message": "CANCEL received. Terminating.", 
+                    "timestamp": 1435371863.524
+                }, 
+                {
+                    "message": "real 37.543606 sec | user 0.990 sec | system 0.366 sec | mem 54812.00 kB", 
+                    "timestamp": 1435371863.524
+                }, 
+                {
+                    "message": "Terminated (_terminate set).", 
+                    "timestamp": 1435371863.591
+                }, 
+                {
+                    "message": "real 37.594055 sec | user 1.155 sec | system 0.484 sec | mem 59880.00 kB", 
+                    "timestamp": 1435371863.591
+                }
+            ], 
+            "logfile": "[... CONTENT SHORTENED ...]\n|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015-06-26 21:24:14,775 - radical.pilot.agent - DEBUG - bulk update result: {'nModified': 4, 'nUpserted': 0, 'nMatched': 4, 'writeErrors': [], 'upserted': [], 'writeConcernErrors': [], 'nRemoved': 0, 'nInserted': 0}\n2015-06-26 21:24:23,524 - radical.pilot.agent - WARNING - CANCEL received. Terminating.\n2015-06-26 21:24:23,591 - radical.pilot.agent - WARNING - Terminated (_terminate set).\n", 
+            "nodes": [
+                "c401-102", 
+                "c401-302", 
+                "c402-703", 
+                "c403-701", 
+                "c403-702", 
+                "c403-703", 
+                "c403-704", 
+                "c413-303", 
+                "c414-303", 
+                "c415-001", 
+                "c419-701", 
+                "c419-902", 
+                "c420-702", 
+                "c420-802", 
+                "c420-804", 
+                "c427-702", 
+                "c458-502", 
+                "c459-102", 
+                "c470-602", 
+                "c470-903", 
+                "c471-503", 
+                "c471-901", 
+                "c472-102", 
+                "c472-104", 
+                "c472-303", 
+                "c472-702", 
+                "c472-703", 
+                "c472-804", 
+                "c473-804", 
+                "c473-901", 
+                "c475-604", 
+                "c476-404", 
+                "c477-602", 
+                "c478-501", 
+                "c479-004", 
+                "c479-901", 
+                "c484-404", 
+                "c488-702", 
+                "c489-003", 
+                "c490-704", 
+                "c491-703", 
+                "c493-001", 
+                "c493-204", 
+                "c494-002", 
+                "c494-801", 
+                "c494-802", 
+                "c494-804", 
+                "c495-001", 
+                "c495-303", 
+                "c495-501", 
+                "c512-804", 
+                "c520-903", 
+                "c533-703", 
+                "c534-704", 
+                "c536-603", 
+                "c536-604", 
+                "c539-002", 
+                "c539-003", 
+                "c542-502", 
+                "c542-503", 
+                "c542-702", 
+                "c542-703", 
+                "c542-803", 
+                "c542-804"
+            ], 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "558dddee23769c333dcc5c5a", 
+            "saga_job_id": "[slurm+ssh://stampede.tacc.utexas.edu/]-[5446440]", 
+            "sagajobid": null, 
+            "sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/", 
+            "started": 1435371853.424, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1435360753.105
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1435360753.425
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1435360786.185
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1435371853.424
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1435371863.524
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1435371863.591
+                }
+            ], 
+            "stderr": "[... CONTENT SHORTENED ...]\n---------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015:06:26 21:24:14 31946  UpdateWorker-0 radical.pilot.agent   : [DEBUG   ] bulk update result: {'nModified': 4, 'nUpserted': 0, 'nMatched': 4, 'writeErrors': [], 'upserted': [], 'writeConcernErrors': [], 'nRemoved': 0, 'nInserted': 0}\n2015:06:26 21:24:23 31946  HeartbeatMonitor radical.pilot.agent   : [WARNING ] CANCEL received. Terminating.\n2015:06:26 21:24:23 31946  MainThread   radical.pilot.agent   : [WARNING ] Terminated (_terminate set).\n", 
+            "stdout": "[... CONTENT SHORTENED ...]\ntg803521/radical.pilot.sandbox/ve_stampede_experiments/lib/python2.7/lib-old', '/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/lib/python2.7/lib-dynload', '/opt/apps/intel13/python/2.7.9/lib/python2.7', '/opt/apps/intel13/python/2.7.9/lib/python2.7/plat-linux2', '/opt/apps/intel13/python/2.7.9/lib/python2.7/lib-tk']\npython: 2.7.9 (default, Apr 26 2015, 12:52:46) \n[GCC Intel(R) C++ gcc 4.4 mode]\nutils : 0.28  : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/radical/utils/__init__.pyc\nsaga  : v0.28-16-gd61cef7@devel : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/saga/__init__.pyc\npilot : v0.33-145-g688f18c@test-tmp_exec_dir : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/radical/pilot/__init__.pyc\n        type  : multicore\n        gitid : $Id$\n\n---------------------------------------------------------------------\n\n", 
+            "submitted": 1435360753.106, 
+            "unit_ids": [
+                "unit.000000"
+            ], 
+            "unitmanager": "558dddf123769c333dcc5c5b"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "558dddee23769c333dcc5c5a", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.ip-10-184-31-85.merzky.016612.0074", 
+        "connected": 1435360750.386, 
+        "created": 1435360750.386, 
+        "name": "rp.session.ip-10-184-31-85.merzky.016612.0074"
+    }, 
+    "umgr": [
+        {
+            "_id": "558dddf123769c333dcc5c5b", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "round_robin"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "/tmp/input_1.dat", 
+                    "state": "Done", 
+                    "target": "input_1.dat"
+                }
+            ], 
+            "FTW_Input_Status": "Done", 
+            "FTW_Output_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "input_1.dat", 
+                    "state": "Done", 
+                    "target": "input_1.dat"
+                }
+            ], 
+            "FTW_Output_Status": "Done", 
+            "_id": "unit.000000", 
+            "callbackhistory": [
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1435360754.145
+                }, 
+                {
+                    "state": "PendingExecution", 
+                    "timestamp": 1435360764.172
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1435371854.507
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1435371855.511
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1435371861.526
+                }
+            ], 
+            "description": {
+                "arguments": [
+                    "0"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sleep", 
+                "input_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "/tmp/input_1.dat", 
+                        "target": "input_1.dat"
+                    }
+                ], 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "input_1.dat", 
+                        "target": "input_1.dat"
+                    }
+                ], 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": 1435371854.435, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1435360753.159
+                }, 
+                {
+                    "message": "Transferring input file file://localhost//tmp/input_1.dat -> sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000//unit.000000/input_1.dat", 
+                    "timestamp": 1435360762.409
+                }, 
+                {
+                    "message": "All FTW Input Staging Directives done - 1.", 
+                    "timestamp": 1435360763.18
+                }, 
+                {
+                    "message": "unit needs no input staging", 
+                    "timestamp": 1435371853.698
+                }, 
+                {
+                    "message": "unit execution start", 
+                    "timestamp": 1435371854.385
+                }, 
+                {
+                    "message": "unit execution completed", 
+                    "timestamp": 1435371854.435
+                }, 
+                {
+                    "message": "FTW output staging needed", 
+                    "timestamp": 1435371854.441
+                }, 
+                {
+                    "message": "Starting transfer of input_1.dat", 
+                    "timestamp": 1435371855.423
+                }, 
+                {
+                    "message": "Transferring output file sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000//unit.000000/input_1.dat -> file://localhost/experiments/merzky/rp-paper-2015-micro/input_1.dat", 
+                    "timestamp": 1435371861.181
+                }, 
+                {
+                    "message": "All FTW output staging directives done - 1.", 
+                    "timestamp": 1435371861.184
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016612.0074-pilot.0000//unit.000000", 
+            "slots": [
+                "c401-102:0"
+            ], 
+            "started": 1435371854.385, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1435360753.154
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1435360754.13
+                }, 
+                {
+                    "state": "PendingExecution", 
+                    "timestamp": 1435360763.182
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1435371853.606
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1435371853.698
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1435371854.385
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1435371854.435
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1435371855.419
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1435371861.185
+                }
+            ], 
+            "stderr": "", 
+            "stdout": "", 
+            "submitted": 1435360753.155, 
+            "unitmanager": "558dddf123769c333dcc5c5b"
+        }
+    ]
+}

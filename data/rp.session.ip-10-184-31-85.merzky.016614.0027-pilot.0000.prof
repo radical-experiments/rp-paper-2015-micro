@@ -1,0 +1,790 @@
+time,component,uid,event,message
+6.0000,Bootstrapper,pilot.0000,bootstrap start,
+6.0000,Bootstrapper,pilot.0000,virtenv_setup start,
+15.0000,Bootstrapper,pilot.0000,rp_install start,
+63.0000,Bootstrapper,pilot.0000,rp_install done,
+63.0000,Bootstrapper,pilot.0000,virtenv_setup end,
+73.0000,Bootstrapper,pilot.0000,agent start,
+80.5714,MainThread,pilot.0000,start,None
+80.5888,MainThread,,db setup,
+80.6829,MainThread,,Agent create,
+80.6830,MainThread,,Agent init,
+80.8001,MainThread,,start,
+80.8003,CONTINUOUS,,run,
+80.8159,StageinWorker-0,,run,
+80.8162,StageinWorker-1,,run,
+80.8164,StageinWorker-2,,run,
+80.8167,StageinWorker-3,,run,
+80.8168,MainThread,,ExecWorker init,
+80.8175,MainThread,,ExecWorker init,
+80.8179,ExecWatcher-0,,run,
+80.8191,MainThread,,ExecWorker init,
+80.8204,MainThread,,ExecWorker init,
+80.8215,MainThread,,run,
+80.8211,ExecWatcher-1,,run,
+80.8219,MainThread,,ExecWorker init,
+80.8234,MainThread,,ExecWorker init,
+80.8240,ExecWatcher-2,,run,
+80.8211,ExecWatcher-1,,run,
+80.8242,MainThread,,run,
+80.8249,MainThread,,ExecWorker init,
+80.8262,MainThread,,ExecWorker init,
+80.8267,ExecWatcher-3,,run,
+80.8272,MainThread,,run,
+80.8282,StageoutWorker-0,,run,
+80.8285,StageoutWorker-1,,run,
+80.8288,StageoutWorker-2,,run,
+80.8296,StageoutWorker-3,,run,
+80.8301,MainThread,,run,
+80.9213,UpdateWorker-0,,run,
+81.0125,UpdateWorker-1,,run,
+81.1029,UpdateWorker-2,,run,
+81.1933,UpdateWorker-3,,run,
+81.1936,HeartbeatMonitor,,run,
+81.1936,MainThread,,Agent init done,
+81.1936,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+81.1943,MainThread,,run,
+81.4684,MainThread,,Agent get units,bulk size: 0
+81.4830,MainThread,unit.000000,get,MongoDB to Agent (PendingExecution)
+81.4830,MainThread,,debug,Agent drops with 1
+81.4831,MainThread,unit.000000,Agent get unit meta,
+81.4872,MainThread,unit.000000,Agent get unit mkdir,
+81.4872,MainThread,unit.000000,put,Agent to update_queue (Allocating)
+81.4873,MainThread,,debug,update_queue drops with 1
+81.4877,MainThread,,debug,schedule_queue drops with 1
+81.4879,MainThread,unit.000000,put,Agent to schedule_queue (Allocating)
+81.4888,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (schedule)
+81.4888,CONTINUOUS,unit.000000,get,schedule_queue to Scheduler (Allocating)
+81.4889,CONTINUOUS,,debug,Scheduler drops with 1
+81.4895,CONTINUOUS,unit.000000,schedule,allocated
+81.4898,CONTINUOUS,,debug,execution_queue drops with 1
+81.4898,CONTINUOUS,unit.000000,put,Scheduler to execution_queue (Allocating)
+81.4902,CONTINUOUS,,unschedule,
+81.4909,CONTINUOUS,,unschedule done - reschedule,
+81.4909,CONTINUOUS,,stop,
+81.4907,MainThread,unit.000000,get,executing_queue to ExecutionWorker (Executing)
+81.4916,MainThread,,debug,ExecWorker drops with 1
+81.4920,MainThread,unit.000000,ExecWorker unit launch,
+81.4920,MainThread,unit.000000,ExecWorker spawn,
+81.4942,UpdateWorker-3,unit.000000,get,update_queue to UpdateWorker (Allocating)
+81.4942,UpdateWorker-3,,debug,UpdateWorker drops with 1
+81.4944,UpdateWorker-3,unit.000000,unit update bulked (Allocating),
+81.4964,MainThread,unit.000000,launch script constructed,
+81.5074,MainThread,unit.000000,spawning pass to popen,
+81.5133,MainThread,unit.000000,spawning passed to popen,
+81.5135,MainThread,unit.000000,put,ExecWorker to update_queue (Executing)
+81.5135,MainThread,,debug,update_queue drops with 1
+81.5140,MainThread,,debug,watch_queue drops with 1
+81.5142,MainThread,unit.000000,put,ExecWorker to watcher (Executing)
+81.5205,ExecWatcher-0,unit.000000,get,ExecWatcher picked up unit
+81.5206,ExecWatcher-0,,debug,ExecWatcher drops with 1
+81.5207,ExecWatcher-0,unit.000000,execution complete,
+81.5210,ExecWatcher-0,unit.000000,put,ExecWatcher to update_queue (StagingOutput)
+81.5212,ExecWatcher-0,,debug,update_queue drops with 1
+81.5213,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (unschedule)
+81.5213,ExecWatcher-0,,debug,stageout_queue drops with 1
+81.5214,CONTINUOUS,unit.000000,schedule,unit deallocation
+81.5221,ExecWatcher-0,unit.000000.clone_00001,add clone,stageout_queue
+81.5221,CONTINUOUS,,unschedule,
+81.5227,ExecWatcher-0,unit.000000.clone_00002,add clone,stageout_queue
+81.5228,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Executing)
+81.5235,ExecWatcher-0,unit.000000.clone_00003,add clone,stageout_queue
+81.5236,UpdateWorker-0,,debug,UpdateWorker drops with 1
+81.5242,UpdateWorker-0,unit.000000,unit update bulked (Executing),
+81.5245,ExecWatcher-0,unit.000000.clone_00004,add clone,stageout_queue
+81.5245,CONTINUOUS,,put_cmd,Scheduler to schedule_queue (reschedule)
+81.5251,ExecWatcher-0,unit.000000.clone_00005,add clone,stageout_queue
+81.5253,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (StagingOutput)
+81.5260,ExecWatcher-0,unit.000000.clone_00006,add clone,stageout_queue
+81.5260,UpdateWorker-0,,debug,UpdateWorker drops with 1
+81.5266,ExecWatcher-0,unit.000000.clone_00007,add clone,stageout_queue
+81.5267,UpdateWorker-0,unit.000000,unit update bulked (StagingOutput),
+81.5274,ExecWatcher-0,unit.000000.clone_00008,add clone,stageout_queue
+81.5280,ExecWatcher-0,unit.000000.clone_00009,add clone,stageout_queue
+81.5286,ExecWatcher-0,unit.000000.clone_00010,add clone,stageout_queue
+81.5286,CONTINUOUS,,unschedule done - reschedule,
+81.5292,ExecWatcher-0,unit.000000.clone_00011,add clone,stageout_queue
+81.5293,CONTINUOUS,,stop,
+81.5298,ExecWatcher-0,unit.000000.clone_00012,add clone,stageout_queue
+81.5305,ExecWatcher-0,unit.000000.clone_00013,add clone,stageout_queue
+81.5305,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (reschedule)
+81.5307,CONTINUOUS,,reschedule,
+81.5312,ExecWatcher-0,unit.000000.clone_00014,add clone,stageout_queue
+81.5319,ExecWatcher-0,unit.000000.clone_00015,add clone,stageout_queue
+81.5325,ExecWatcher-0,unit.000000.clone_00016,add clone,stageout_queue
+81.5331,ExecWatcher-0,unit.000000.clone_00017,add clone,stageout_queue
+81.5339,ExecWatcher-0,unit.000000.clone_00018,add clone,stageout_queue
+81.5346,ExecWatcher-0,unit.000000.clone_00019,add clone,stageout_queue
+81.5360,ExecWatcher-0,unit.000000.clone_00020,add clone,stageout_queue
+81.5360,CONTINUOUS,,reschedule done,
+81.5366,ExecWatcher-0,unit.000000.clone_00021,add clone,stageout_queue
+81.5366,CONTINUOUS,,stop,
+81.5372,ExecWatcher-0,unit.000000.clone_00022,add clone,stageout_queue
+81.5379,ExecWatcher-0,unit.000000.clone_00023,add clone,stageout_queue
+81.5384,ExecWatcher-0,unit.000000.clone_00024,add clone,stageout_queue
+81.5389,ExecWatcher-0,unit.000000.clone_00025,add clone,stageout_queue
+81.5394,ExecWatcher-0,unit.000000.clone_00026,add clone,stageout_queue
+81.5400,ExecWatcher-0,unit.000000.clone_00027,add clone,stageout_queue
+81.5406,ExecWatcher-0,unit.000000.clone_00028,add clone,stageout_queue
+81.5412,ExecWatcher-0,unit.000000.clone_00029,add clone,stageout_queue
+81.5417,ExecWatcher-0,unit.000000.clone_00030,add clone,stageout_queue
+81.5422,ExecWatcher-0,unit.000000.clone_00031,add clone,stageout_queue
+81.5427,ExecWatcher-0,unit.000000.clone_00032,add clone,stageout_queue
+81.5433,ExecWatcher-0,unit.000000.clone_00033,add clone,stageout_queue
+81.5438,ExecWatcher-0,unit.000000.clone_00034,add clone,stageout_queue
+81.5443,ExecWatcher-0,unit.000000.clone_00035,add clone,stageout_queue
+81.5448,ExecWatcher-0,unit.000000.clone_00036,add clone,stageout_queue
+81.5454,ExecWatcher-0,unit.000000.clone_00037,add clone,stageout_queue
+81.5459,ExecWatcher-0,unit.000000.clone_00038,add clone,stageout_queue
+81.5464,ExecWatcher-0,unit.000000.clone_00039,add clone,stageout_queue
+81.5469,ExecWatcher-0,unit.000000.clone_00040,add clone,stageout_queue
+81.5475,ExecWatcher-0,unit.000000.clone_00041,add clone,stageout_queue
+81.5480,ExecWatcher-0,unit.000000.clone_00042,add clone,stageout_queue
+81.5485,ExecWatcher-0,unit.000000.clone_00043,add clone,stageout_queue
+81.5490,ExecWatcher-0,unit.000000.clone_00044,add clone,stageout_queue
+81.5496,ExecWatcher-0,unit.000000.clone_00045,add clone,stageout_queue
+81.5501,ExecWatcher-0,unit.000000.clone_00046,add clone,stageout_queue
+81.5506,ExecWatcher-0,unit.000000.clone_00047,add clone,stageout_queue
+81.5511,ExecWatcher-0,unit.000000.clone_00048,add clone,stageout_queue
+81.5516,ExecWatcher-0,unit.000000.clone_00049,add clone,stageout_queue
+81.5522,ExecWatcher-0,unit.000000.clone_00050,add clone,stageout_queue
+81.5527,ExecWatcher-0,unit.000000.clone_00051,add clone,stageout_queue
+81.5532,ExecWatcher-0,unit.000000.clone_00052,add clone,stageout_queue
+81.5538,ExecWatcher-0,unit.000000.clone_00053,add clone,stageout_queue
+81.5544,ExecWatcher-0,unit.000000.clone_00054,add clone,stageout_queue
+81.5549,ExecWatcher-0,unit.000000.clone_00055,add clone,stageout_queue
+81.5554,ExecWatcher-0,unit.000000.clone_00056,add clone,stageout_queue
+81.5559,ExecWatcher-0,unit.000000.clone_00057,add clone,stageout_queue
+81.5565,ExecWatcher-0,unit.000000.clone_00058,add clone,stageout_queue
+81.5570,ExecWatcher-0,unit.000000.clone_00059,add clone,stageout_queue
+81.5575,ExecWatcher-0,unit.000000.clone_00060,add clone,stageout_queue
+81.5580,ExecWatcher-0,unit.000000.clone_00061,add clone,stageout_queue
+81.5586,ExecWatcher-0,unit.000000.clone_00062,add clone,stageout_queue
+81.5591,ExecWatcher-0,unit.000000.clone_00063,add clone,stageout_queue
+81.5596,ExecWatcher-0,unit.000000.clone_00064,add clone,stageout_queue
+81.5602,ExecWatcher-0,unit.000000.clone_00065,add clone,stageout_queue
+81.5607,ExecWatcher-0,unit.000000.clone_00066,add clone,stageout_queue
+81.5612,ExecWatcher-0,unit.000000.clone_00067,add clone,stageout_queue
+81.5617,ExecWatcher-0,unit.000000.clone_00068,add clone,stageout_queue
+81.5622,ExecWatcher-0,unit.000000.clone_00069,add clone,stageout_queue
+81.5628,ExecWatcher-0,unit.000000.clone_00070,add clone,stageout_queue
+81.5633,ExecWatcher-0,unit.000000.clone_00071,add clone,stageout_queue
+81.5638,ExecWatcher-0,unit.000000.clone_00072,add clone,stageout_queue
+81.5643,ExecWatcher-0,unit.000000.clone_00073,add clone,stageout_queue
+81.5649,ExecWatcher-0,unit.000000.clone_00074,add clone,stageout_queue
+81.5654,ExecWatcher-0,unit.000000.clone_00075,add clone,stageout_queue
+81.5659,ExecWatcher-0,unit.000000.clone_00076,add clone,stageout_queue
+81.5664,ExecWatcher-0,unit.000000.clone_00077,add clone,stageout_queue
+81.5670,ExecWatcher-0,unit.000000.clone_00078,add clone,stageout_queue
+81.5676,ExecWatcher-0,unit.000000.clone_00079,add clone,stageout_queue
+81.5681,ExecWatcher-0,unit.000000.clone_00080,add clone,stageout_queue
+81.5686,ExecWatcher-0,unit.000000.clone_00081,add clone,stageout_queue
+81.5691,ExecWatcher-0,unit.000000.clone_00082,add clone,stageout_queue
+81.5697,ExecWatcher-0,unit.000000.clone_00083,add clone,stageout_queue
+81.5702,ExecWatcher-0,unit.000000.clone_00084,add clone,stageout_queue
+81.5707,ExecWatcher-0,unit.000000.clone_00085,add clone,stageout_queue
+81.5712,ExecWatcher-0,unit.000000.clone_00086,add clone,stageout_queue
+81.5717,ExecWatcher-0,unit.000000.clone_00087,add clone,stageout_queue
+81.5723,ExecWatcher-0,unit.000000.clone_00088,add clone,stageout_queue
+81.5728,ExecWatcher-0,unit.000000.clone_00089,add clone,stageout_queue
+81.5733,ExecWatcher-0,unit.000000.clone_00090,add clone,stageout_queue
+81.5738,ExecWatcher-0,unit.000000.clone_00091,add clone,stageout_queue
+81.5744,ExecWatcher-0,unit.000000.clone_00092,add clone,stageout_queue
+81.5749,ExecWatcher-0,unit.000000.clone_00093,add clone,stageout_queue
+81.5754,ExecWatcher-0,unit.000000.clone_00094,add clone,stageout_queue
+81.5759,ExecWatcher-0,unit.000000.clone_00095,add clone,stageout_queue
+81.5765,ExecWatcher-0,unit.000000.clone_00096,add clone,stageout_queue
+81.5770,ExecWatcher-0,unit.000000.clone_00097,add clone,stageout_queue
+81.5775,ExecWatcher-0,unit.000000.clone_00098,add clone,stageout_queue
+81.5780,ExecWatcher-0,unit.000000.clone_00099,add clone,stageout_queue
+81.5786,ExecWatcher-0,unit.000000.clone_00100,add clone,stageout_queue
+81.5791,ExecWatcher-0,unit.000000.clone_00101,add clone,stageout_queue
+81.5796,ExecWatcher-0,unit.000000.clone_00102,add clone,stageout_queue
+81.5804,ExecWatcher-0,unit.000000.clone_00103,add clone,stageout_queue
+81.5812,ExecWatcher-0,unit.000000.clone_00104,add clone,stageout_queue
+81.5819,ExecWatcher-0,unit.000000.clone_00105,add clone,stageout_queue
+81.5828,ExecWatcher-0,unit.000000.clone_00106,add clone,stageout_queue
+81.5835,ExecWatcher-0,unit.000000.clone_00107,add clone,stageout_queue
+81.5840,ExecWatcher-0,unit.000000.clone_00108,add clone,stageout_queue
+81.5846,ExecWatcher-0,unit.000000.clone_00109,add clone,stageout_queue
+81.5851,ExecWatcher-0,unit.000000.clone_00110,add clone,stageout_queue
+81.5856,ExecWatcher-0,unit.000000.clone_00111,add clone,stageout_queue
+81.5861,ExecWatcher-0,unit.000000.clone_00112,add clone,stageout_queue
+81.5867,ExecWatcher-0,unit.000000.clone_00113,add clone,stageout_queue
+81.5872,ExecWatcher-0,unit.000000.clone_00114,add clone,stageout_queue
+81.5877,ExecWatcher-0,unit.000000.clone_00115,add clone,stageout_queue
+81.5882,ExecWatcher-0,unit.000000.clone_00116,add clone,stageout_queue
+81.5888,ExecWatcher-0,unit.000000.clone_00117,add clone,stageout_queue
+81.5893,ExecWatcher-0,unit.000000.clone_00118,add clone,stageout_queue
+81.5898,ExecWatcher-0,unit.000000.clone_00119,add clone,stageout_queue
+81.5903,ExecWatcher-0,unit.000000.clone_00120,add clone,stageout_queue
+81.5909,ExecWatcher-0,unit.000000.clone_00121,add clone,stageout_queue
+81.5914,ExecWatcher-0,unit.000000.clone_00122,add clone,stageout_queue
+81.5919,ExecWatcher-0,unit.000000.clone_00123,add clone,stageout_queue
+81.5924,ExecWatcher-0,unit.000000.clone_00124,add clone,stageout_queue
+81.5930,ExecWatcher-0,unit.000000.clone_00125,add clone,stageout_queue
+81.5935,ExecWatcher-0,unit.000000.clone_00126,add clone,stageout_queue
+81.5940,ExecWatcher-0,unit.000000.clone_00127,add clone,stageout_queue
+81.5940,ExecWatcher-0,unit.000000.clone_00001,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5943,ExecWatcher-0,unit.000000.clone_00002,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5965,ExecWatcher-0,unit.000000.clone_00003,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5968,StageoutWorker-1,unit.000000.clone_00001,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5970,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.5971,StageoutWorker-1,unit.000000.clone_00001,drop clone,StageoutWorker
+81.5972,StageoutWorker-2,unit.000000.clone_00002,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5973,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.5974,ExecWatcher-0,unit.000000.clone_00004,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5974,StageoutWorker-2,unit.000000.clone_00002,drop clone,StageoutWorker
+81.5979,StageoutWorker-0,unit.000000.clone_00003,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5980,ExecWatcher-0,unit.000000.clone_00005,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5981,StageoutWorker-3,unit.000000.clone_00004,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5982,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.5983,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.5984,StageoutWorker-0,unit.000000.clone_00003,drop clone,StageoutWorker
+81.5984,StageoutWorker-3,unit.000000.clone_00004,drop clone,StageoutWorker
+81.5985,ExecWatcher-0,unit.000000.clone_00006,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5986,ExecWatcher-0,unit.000000.clone_00007,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5989,StageoutWorker-1,unit.000000.clone_00005,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5991,ExecWatcher-0,unit.000000.clone_00008,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5991,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.5993,StageoutWorker-2,unit.000000.clone_00006,get,stageout_queue to StageoutWorker (StagingOutput)
+81.5994,StageoutWorker-1,unit.000000.clone_00005,drop clone,StageoutWorker
+81.5996,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.5996,StageoutWorker-2,unit.000000.clone_00006,drop clone,StageoutWorker
+81.5998,ExecWatcher-0,unit.000000.clone_00009,put,ExecWatcher to stageout_queue (StagingOutput)
+81.5999,StageoutWorker-0,unit.000000.clone_00007,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6001,ExecWatcher-0,unit.000000.clone_00010,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6002,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6004,StageoutWorker-0,unit.000000.clone_00007,drop clone,StageoutWorker
+81.6006,StageoutWorker-3,unit.000000.clone_00008,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6007,StageoutWorker-1,unit.000000.clone_00009,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6008,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6008,ExecWatcher-0,unit.000000.clone_00011,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6010,StageoutWorker-3,unit.000000.clone_00008,drop clone,StageoutWorker
+81.6013,StageoutWorker-2,unit.000000.clone_00010,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6014,ExecWatcher-0,unit.000000.clone_00012,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6015,ExecWatcher-0,unit.000000.clone_00013,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6018,StageoutWorker-0,unit.000000.clone_00011,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6018,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6019,ExecWatcher-0,unit.000000.clone_00014,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6020,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6021,StageoutWorker-2,unit.000000.clone_00010,drop clone,StageoutWorker
+81.6022,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6022,StageoutWorker-1,unit.000000.clone_00009,drop clone,StageoutWorker
+81.6023,ExecWatcher-0,unit.000000.clone_00015,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6025,StageoutWorker-0,unit.000000.clone_00011,drop clone,StageoutWorker
+81.6026,StageoutWorker-3,unit.000000.clone_00012,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6027,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6027,StageoutWorker-2,unit.000000.clone_00013,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6028,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6028,ExecWatcher-0,unit.000000.clone_00016,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6030,StageoutWorker-1,unit.000000.clone_00014,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6031,StageoutWorker-3,unit.000000.clone_00012,drop clone,StageoutWorker
+81.6031,StageoutWorker-2,unit.000000.clone_00013,drop clone,StageoutWorker
+81.6032,StageoutWorker-0,unit.000000.clone_00015,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6033,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6033,StageoutWorker-1,unit.000000.clone_00014,drop clone,StageoutWorker
+81.6034,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6034,ExecWatcher-0,unit.000000.clone_00017,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6037,StageoutWorker-0,unit.000000.clone_00015,drop clone,StageoutWorker
+81.6038,ExecWatcher-0,unit.000000.clone_00018,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6039,StageoutWorker-2,unit.000000.clone_00016,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6040,ExecWatcher-0,unit.000000.clone_00019,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6041,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6042,ExecWatcher-0,unit.000000.clone_00020,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6044,StageoutWorker-2,unit.000000.clone_00016,drop clone,StageoutWorker
+81.6046,StageoutWorker-1,unit.000000.clone_00017,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6047,ExecWatcher-0,unit.000000.clone_00021,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6049,ExecWatcher-0,unit.000000.clone_00022,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6052,StageoutWorker-3,unit.000000.clone_00018,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6053,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6053,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6055,ExecWatcher-0,unit.000000.clone_00023,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6057,StageoutWorker-0,unit.000000.clone_00019,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6057,StageoutWorker-1,unit.000000.clone_00017,drop clone,StageoutWorker
+81.6057,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6058,StageoutWorker-3,unit.000000.clone_00018,drop clone,StageoutWorker
+81.6058,StageoutWorker-0,unit.000000.clone_00019,drop clone,StageoutWorker
+81.6058,ExecWatcher-0,unit.000000.clone_00024,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6059,StageoutWorker-2,unit.000000.clone_00020,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6062,StageoutWorker-3,unit.000000.clone_00021,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6064,StageoutWorker-1,unit.000000.clone_00022,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6064,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6065,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6066,ExecWatcher-0,unit.000000.clone_00025,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6067,StageoutWorker-0,unit.000000.clone_00023,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6069,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6069,StageoutWorker-1,unit.000000.clone_00022,drop clone,StageoutWorker
+81.6069,StageoutWorker-2,unit.000000.clone_00020,drop clone,StageoutWorker
+81.6069,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6070,StageoutWorker-0,unit.000000.clone_00023,drop clone,StageoutWorker
+81.6071,ExecWatcher-0,unit.000000.clone_00026,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6072,StageoutWorker-3,unit.000000.clone_00021,drop clone,StageoutWorker
+81.6075,StageoutWorker-2,unit.000000.clone_00024,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6076,ExecWatcher-0,unit.000000.clone_00027,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6077,StageoutWorker-1,unit.000000.clone_00025,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6077,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6078,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6078,StageoutWorker-2,unit.000000.clone_00024,drop clone,StageoutWorker
+81.6079,ExecWatcher-0,unit.000000.clone_00028,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6080,StageoutWorker-1,unit.000000.clone_00025,drop clone,StageoutWorker
+81.6081,ExecWatcher-0,unit.000000.clone_00029,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6085,StageoutWorker-0,unit.000000.clone_00026,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6086,StageoutWorker-3,unit.000000.clone_00027,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6087,ExecWatcher-0,unit.000000.clone_00030,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6089,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6090,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6090,StageoutWorker-3,unit.000000.clone_00027,drop clone,StageoutWorker
+81.6091,ExecWatcher-0,unit.000000.clone_00031,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6092,StageoutWorker-1,unit.000000.clone_00028,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6094,StageoutWorker-0,unit.000000.clone_00026,drop clone,StageoutWorker
+81.6094,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6096,StageoutWorker-2,unit.000000.clone_00029,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6096,ExecWatcher-0,unit.000000.clone_00032,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6097,StageoutWorker-1,unit.000000.clone_00028,drop clone,StageoutWorker
+81.6097,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6099,ExecWatcher-0,unit.000000.clone_00033,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6099,StageoutWorker-2,unit.000000.clone_00029,drop clone,StageoutWorker
+81.6101,StageoutWorker-0,unit.000000.clone_00030,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6102,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6102,ExecWatcher-0,unit.000000.clone_00034,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6104,StageoutWorker-3,unit.000000.clone_00031,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6105,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6107,ExecWatcher-0,unit.000000.clone_00035,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6107,StageoutWorker-3,unit.000000.clone_00031,drop clone,StageoutWorker
+81.6109,StageoutWorker-0,unit.000000.clone_00030,drop clone,StageoutWorker
+81.6111,StageoutWorker-1,unit.000000.clone_00032,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6111,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6112,ExecWatcher-0,unit.000000.clone_00036,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6113,StageoutWorker-1,unit.000000.clone_00032,drop clone,StageoutWorker
+81.6115,StageoutWorker-2,unit.000000.clone_00033,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6116,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6116,ExecWatcher-0,unit.000000.clone_00037,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6119,StageoutWorker-3,unit.000000.clone_00034,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6120,ExecWatcher-0,unit.000000.clone_00038,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6121,StageoutWorker-2,unit.000000.clone_00033,drop clone,StageoutWorker
+81.6121,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6122,ExecWatcher-0,unit.000000.clone_00039,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6124,StageoutWorker-0,unit.000000.clone_00035,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6125,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6125,StageoutWorker-0,unit.000000.clone_00035,drop clone,StageoutWorker
+81.6126,ExecWatcher-0,unit.000000.clone_00040,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6126,StageoutWorker-3,unit.000000.clone_00034,drop clone,StageoutWorker
+81.6128,ExecWatcher-0,unit.000000.clone_00041,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6133,StageoutWorker-1,unit.000000.clone_00036,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6134,ExecWatcher-0,unit.000000.clone_00042,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6135,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6138,StageoutWorker-2,unit.000000.clone_00037,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6138,ExecWatcher-0,unit.000000.clone_00043,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6139,StageoutWorker-1,unit.000000.clone_00036,drop clone,StageoutWorker
+81.6141,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6142,ExecWatcher-0,unit.000000.clone_00044,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6143,StageoutWorker-0,unit.000000.clone_00038,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6143,StageoutWorker-2,unit.000000.clone_00037,drop clone,StageoutWorker
+81.6144,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6145,StageoutWorker-3,unit.000000.clone_00039,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6146,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6146,StageoutWorker-0,unit.000000.clone_00038,drop clone,StageoutWorker
+81.6147,ExecWatcher-0,unit.000000.clone_00045,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6149,StageoutWorker-3,unit.000000.clone_00039,drop clone,StageoutWorker
+81.6150,ExecWatcher-0,unit.000000.clone_00046,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6153,StageoutWorker-1,unit.000000.clone_00040,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6154,ExecWatcher-0,unit.000000.clone_00047,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6157,StageoutWorker-2,unit.000000.clone_00041,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6157,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6158,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6158,StageoutWorker-2,unit.000000.clone_00041,drop clone,StageoutWorker
+81.6160,StageoutWorker-0,unit.000000.clone_00042,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6160,ExecWatcher-0,unit.000000.clone_00048,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6160,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6161,StageoutWorker-1,unit.000000.clone_00040,drop clone,StageoutWorker
+81.6161,StageoutWorker-0,unit.000000.clone_00042,drop clone,StageoutWorker
+81.6162,ExecWatcher-0,unit.000000.clone_00049,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6164,StageoutWorker-3,unit.000000.clone_00043,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6165,StageoutWorker-2,unit.000000.clone_00044,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6166,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6166,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6167,StageoutWorker-2,unit.000000.clone_00044,drop clone,StageoutWorker
+81.6168,StageoutWorker-3,unit.000000.clone_00043,drop clone,StageoutWorker
+81.6170,StageoutWorker-1,unit.000000.clone_00045,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6170,ExecWatcher-0,unit.000000.clone_00050,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6172,ExecWatcher-0,unit.000000.clone_00051,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6173,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6173,ExecWatcher-0,unit.000000.clone_00052,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6175,StageoutWorker-0,unit.000000.clone_00046,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6177,ExecWatcher-0,unit.000000.clone_00053,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6177,StageoutWorker-1,unit.000000.clone_00045,drop clone,StageoutWorker
+81.6179,StageoutWorker-2,unit.000000.clone_00047,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6179,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6180,StageoutWorker-3,unit.000000.clone_00048,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6182,StageoutWorker-1,unit.000000.clone_00049,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6183,ExecWatcher-0,unit.000000.clone_00054,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6185,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6185,StageoutWorker-3,unit.000000.clone_00048,drop clone,StageoutWorker
+81.6185,StageoutWorker-0,unit.000000.clone_00046,drop clone,StageoutWorker
+81.6186,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6188,ExecWatcher-0,unit.000000.clone_00055,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6189,StageoutWorker-2,unit.000000.clone_00047,drop clone,StageoutWorker
+81.6189,StageoutWorker-0,unit.000000.clone_00050,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6190,ExecWatcher-0,unit.000000.clone_00056,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6191,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6192,StageoutWorker-3,unit.000000.clone_00051,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6193,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6193,StageoutWorker-0,unit.000000.clone_00050,drop clone,StageoutWorker
+81.6195,ExecWatcher-0,unit.000000.clone_00057,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6195,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6196,StageoutWorker-3,unit.000000.clone_00051,drop clone,StageoutWorker
+81.6197,StageoutWorker-1,unit.000000.clone_00049,drop clone,StageoutWorker
+81.6198,StageoutWorker-2,unit.000000.clone_00052,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6199,ExecWatcher-0,unit.000000.clone_00058,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6201,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6203,StageoutWorker-2,unit.000000.clone_00052,drop clone,StageoutWorker
+81.6203,ExecWatcher-0,unit.000000.clone_00059,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6206,StageoutWorker-0,unit.000000.clone_00053,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6207,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6207,ExecWatcher-0,unit.000000.clone_00060,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6207,StageoutWorker-0,unit.000000.clone_00053,drop clone,StageoutWorker
+81.6209,StageoutWorker-3,unit.000000.clone_00054,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6210,StageoutWorker-1,unit.000000.clone_00055,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6211,ExecWatcher-0,unit.000000.clone_00061,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6212,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6212,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6213,StageoutWorker-1,unit.000000.clone_00055,drop clone,StageoutWorker
+81.6214,StageoutWorker-2,unit.000000.clone_00056,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6215,StageoutWorker-3,unit.000000.clone_00054,drop clone,StageoutWorker
+81.6216,StageoutWorker-0,unit.000000.clone_00057,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6216,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6217,ExecWatcher-0,unit.000000.clone_00062,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6219,StageoutWorker-1,unit.000000.clone_00058,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6221,StageoutWorker-2,unit.000000.clone_00056,drop clone,StageoutWorker
+81.6221,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6222,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6223,ExecWatcher-0,unit.000000.clone_00063,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6223,StageoutWorker-0,unit.000000.clone_00057,drop clone,StageoutWorker
+81.6226,ExecWatcher-0,unit.000000.clone_00064,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6227,StageoutWorker-3,unit.000000.clone_00059,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6227,StageoutWorker-1,unit.000000.clone_00058,drop clone,StageoutWorker
+81.6228,ExecWatcher-0,unit.000000.clone_00065,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6230,StageoutWorker-2,unit.000000.clone_00060,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6232,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6232,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6232,StageoutWorker-2,unit.000000.clone_00060,drop clone,StageoutWorker
+81.6233,ExecWatcher-0,unit.000000.clone_00066,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6236,StageoutWorker-3,unit.000000.clone_00059,drop clone,StageoutWorker
+81.6237,ExecWatcher-0,unit.000000.clone_00067,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6239,ExecWatcher-0,unit.000000.clone_00068,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6240,StageoutWorker-1,unit.000000.clone_00061,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6241,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6241,ExecWatcher-0,unit.000000.clone_00069,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6243,StageoutWorker-0,unit.000000.clone_00062,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6243,StageoutWorker-1,unit.000000.clone_00061,drop clone,StageoutWorker
+81.6243,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6245,StageoutWorker-2,unit.000000.clone_00063,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6246,ExecWatcher-0,unit.000000.clone_00070,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6248,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6249,ExecWatcher-0,unit.000000.clone_00071,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6250,StageoutWorker-3,unit.000000.clone_00064,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6250,StageoutWorker-2,unit.000000.clone_00063,drop clone,StageoutWorker
+81.6251,ExecWatcher-0,unit.000000.clone_00072,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6253,StageoutWorker-0,unit.000000.clone_00062,drop clone,StageoutWorker
+81.6255,ExecWatcher-0,unit.000000.clone_00073,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6256,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6258,StageoutWorker-3,unit.000000.clone_00064,drop clone,StageoutWorker
+81.6261,ExecWatcher-0,unit.000000.clone_00074,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6264,StageoutWorker-1,unit.000000.clone_00065,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6265,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6266,StageoutWorker-2,unit.000000.clone_00066,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6267,ExecWatcher-0,unit.000000.clone_00075,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6267,StageoutWorker-1,unit.000000.clone_00065,drop clone,StageoutWorker
+81.6268,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6270,ExecWatcher-0,unit.000000.clone_00076,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6271,StageoutWorker-2,unit.000000.clone_00066,drop clone,StageoutWorker
+81.6272,StageoutWorker-0,unit.000000.clone_00067,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6272,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6274,ExecWatcher-0,unit.000000.clone_00077,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6276,StageoutWorker-3,unit.000000.clone_00068,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6276,StageoutWorker-0,unit.000000.clone_00067,drop clone,StageoutWorker
+81.6277,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6279,StageoutWorker-3,unit.000000.clone_00068,drop clone,StageoutWorker
+81.6281,ExecWatcher-0,unit.000000.clone_00078,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6285,StageoutWorker-1,unit.000000.clone_00069,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6286,ExecWatcher-0,unit.000000.clone_00079,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6286,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6288,StageoutWorker-1,unit.000000.clone_00069,drop clone,StageoutWorker
+81.6289,StageoutWorker-2,unit.000000.clone_00070,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6289,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6290,StageoutWorker-2,unit.000000.clone_00070,drop clone,StageoutWorker
+81.6291,ExecWatcher-0,unit.000000.clone_00080,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6292,StageoutWorker-3,unit.000000.clone_00071,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6293,ExecWatcher-0,unit.000000.clone_00081,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6295,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6296,ExecWatcher-0,unit.000000.clone_00082,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6297,StageoutWorker-0,unit.000000.clone_00072,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6298,StageoutWorker-3,unit.000000.clone_00071,drop clone,StageoutWorker
+81.6299,StageoutWorker-1,unit.000000.clone_00073,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6301,StageoutWorker-2,unit.000000.clone_00074,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6301,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6302,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6304,StageoutWorker-0,unit.000000.clone_00072,drop clone,StageoutWorker
+81.6305,ExecWatcher-0,unit.000000.clone_00083,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6308,StageoutWorker-3,unit.000000.clone_00075,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6308,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6309,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6309,StageoutWorker-1,unit.000000.clone_00073,drop clone,StageoutWorker
+81.6309,StageoutWorker-3,unit.000000.clone_00075,drop clone,StageoutWorker
+81.6310,ExecWatcher-0,unit.000000.clone_00084,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6312,StageoutWorker-2,unit.000000.clone_00074,drop clone,StageoutWorker
+81.6313,ExecWatcher-0,unit.000000.clone_00085,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6313,StageoutWorker-1,unit.000000.clone_00076,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6317,StageoutWorker-0,unit.000000.clone_00077,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6318,ExecWatcher-0,unit.000000.clone_00086,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6318,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6319,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6320,StageoutWorker-3,unit.000000.clone_00078,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6321,StageoutWorker-0,unit.000000.clone_00077,drop clone,StageoutWorker
+81.6321,StageoutWorker-1,unit.000000.clone_00076,drop clone,StageoutWorker
+81.6322,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6323,StageoutWorker-0,unit.000000.clone_00079,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6324,ExecWatcher-0,unit.000000.clone_00087,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6326,StageoutWorker-1,unit.000000.clone_00080,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6326,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6326,StageoutWorker-3,unit.000000.clone_00078,drop clone,StageoutWorker
+81.6327,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6328,ExecWatcher-0,unit.000000.clone_00088,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6329,StageoutWorker-1,unit.000000.clone_00080,drop clone,StageoutWorker
+81.6332,StageoutWorker-2,unit.000000.clone_00081,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6333,ExecWatcher-0,unit.000000.clone_00089,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6334,StageoutWorker-0,unit.000000.clone_00079,drop clone,StageoutWorker
+81.6335,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6336,StageoutWorker-2,unit.000000.clone_00081,drop clone,StageoutWorker
+81.6337,ExecWatcher-0,unit.000000.clone_00090,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6339,StageoutWorker-3,unit.000000.clone_00082,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6340,ExecWatcher-0,unit.000000.clone_00091,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6341,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6343,StageoutWorker-0,unit.000000.clone_00083,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6345,StageoutWorker-1,unit.000000.clone_00084,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6345,StageoutWorker-3,unit.000000.clone_00082,drop clone,StageoutWorker
+81.6346,StageoutWorker-2,unit.000000.clone_00085,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6346,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6346,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6346,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6347,ExecWatcher-0,unit.000000.clone_00092,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6348,StageoutWorker-2,unit.000000.clone_00085,drop clone,StageoutWorker
+81.6348,StageoutWorker-1,unit.000000.clone_00084,drop clone,StageoutWorker
+81.6349,StageoutWorker-0,unit.000000.clone_00083,drop clone,StageoutWorker
+81.6349,StageoutWorker-3,unit.000000.clone_00086,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6350,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6351,StageoutWorker-3,unit.000000.clone_00086,drop clone,StageoutWorker
+81.6353,StageoutWorker-2,unit.000000.clone_00087,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6353,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6354,ExecWatcher-0,unit.000000.clone_00093,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6356,StageoutWorker-0,unit.000000.clone_00088,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6358,StageoutWorker-1,unit.000000.clone_00089,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6358,StageoutWorker-2,unit.000000.clone_00087,drop clone,StageoutWorker
+81.6358,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6359,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6359,StageoutWorker-1,unit.000000.clone_00089,drop clone,StageoutWorker
+81.6360,StageoutWorker-3,unit.000000.clone_00090,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6360,StageoutWorker-0,unit.000000.clone_00088,drop clone,StageoutWorker
+81.6361,ExecWatcher-0,unit.000000.clone_00094,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6362,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6363,StageoutWorker-2,unit.000000.clone_00091,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6363,StageoutWorker-3,unit.000000.clone_00090,drop clone,StageoutWorker
+81.6364,ExecWatcher-0,unit.000000.clone_00095,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6364,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6366,ExecWatcher-0,unit.000000.clone_00096,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6366,StageoutWorker-2,unit.000000.clone_00091,drop clone,StageoutWorker
+81.6367,StageoutWorker-3,unit.000000.clone_00092,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6368,ExecWatcher-0,unit.000000.clone_00097,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6369,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6370,ExecWatcher-0,unit.000000.clone_00098,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6375,StageoutWorker-3,unit.000000.clone_00092,drop clone,StageoutWorker
+81.6378,StageoutWorker-1,unit.000000.clone_00093,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6380,ExecWatcher-0,unit.000000.clone_00099,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6380,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6381,StageoutWorker-2,unit.000000.clone_00094,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6382,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6382,StageoutWorker-1,unit.000000.clone_00093,drop clone,StageoutWorker
+81.6383,StageoutWorker-0,unit.000000.clone_00095,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6384,ExecWatcher-0,unit.000000.clone_00100,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6384,StageoutWorker-2,unit.000000.clone_00094,drop clone,StageoutWorker
+81.6385,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6386,StageoutWorker-0,unit.000000.clone_00095,drop clone,StageoutWorker
+81.6388,StageoutWorker-3,unit.000000.clone_00096,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6388,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6389,StageoutWorker-1,unit.000000.clone_00097,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6390,ExecWatcher-0,unit.000000.clone_00101,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6393,StageoutWorker-2,unit.000000.clone_00098,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6394,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6394,ExecWatcher-0,unit.000000.clone_00102,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6395,StageoutWorker-0,unit.000000.clone_00099,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6395,StageoutWorker-3,unit.000000.clone_00096,drop clone,StageoutWorker
+81.6395,StageoutWorker-2,unit.000000.clone_00098,drop clone,StageoutWorker
+81.6396,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6396,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6398,StageoutWorker-0,unit.000000.clone_00099,drop clone,StageoutWorker
+81.6399,ExecWatcher-0,unit.000000.clone_00103,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6401,StageoutWorker-2,unit.000000.clone_00100,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6402,ExecWatcher-0,unit.000000.clone_00104,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6403,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6404,ExecWatcher-0,unit.000000.clone_00105,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6404,StageoutWorker-3,unit.000000.clone_00101,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6405,StageoutWorker-0,unit.000000.clone_00102,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6407,StageoutWorker-2,unit.000000.clone_00100,drop clone,StageoutWorker
+81.6408,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6408,StageoutWorker-1,unit.000000.clone_00097,drop clone,StageoutWorker
+81.6408,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6409,StageoutWorker-2,unit.000000.clone_00103,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6410,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6410,StageoutWorker-0,unit.000000.clone_00102,drop clone,StageoutWorker
+81.6411,ExecWatcher-0,unit.000000.clone_00106,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6412,StageoutWorker-2,unit.000000.clone_00103,drop clone,StageoutWorker
+81.6413,StageoutWorker-3,unit.000000.clone_00101,drop clone,StageoutWorker
+81.6415,ExecWatcher-0,unit.000000.clone_00107,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6417,StageoutWorker-1,unit.000000.clone_00104,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6418,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6418,ExecWatcher-0,unit.000000.clone_00108,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6420,StageoutWorker-3,unit.000000.clone_00105,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6423,StageoutWorker-2,unit.000000.clone_00106,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6423,StageoutWorker-1,unit.000000.clone_00104,drop clone,StageoutWorker
+81.6423,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6424,StageoutWorker-0,unit.000000.clone_00107,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6425,StageoutWorker-2,unit.000000.clone_00106,drop clone,StageoutWorker
+81.6425,ExecWatcher-0,unit.000000.clone_00109,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6426,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6426,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6427,StageoutWorker-0,unit.000000.clone_00107,drop clone,StageoutWorker
+81.6429,StageoutWorker-2,unit.000000.clone_00108,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6430,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6430,ExecWatcher-0,unit.000000.clone_00110,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6432,StageoutWorker-2,unit.000000.clone_00108,drop clone,StageoutWorker
+81.6433,StageoutWorker-3,unit.000000.clone_00105,drop clone,StageoutWorker
+81.6433,ExecWatcher-0,unit.000000.clone_00111,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6434,StageoutWorker-1,unit.000000.clone_00109,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6435,ExecWatcher-0,unit.000000.clone_00112,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6438,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6438,StageoutWorker-1,unit.000000.clone_00109,drop clone,StageoutWorker
+81.6439,ExecWatcher-0,unit.000000.clone_00113,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6441,StageoutWorker-0,unit.000000.clone_00110,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6441,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6442,ExecWatcher-0,unit.000000.clone_00114,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6442,StageoutWorker-0,unit.000000.clone_00110,drop clone,StageoutWorker
+81.6445,ExecWatcher-0,unit.000000.clone_00115,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6448,StageoutWorker-2,unit.000000.clone_00111,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6449,ExecWatcher-0,unit.000000.clone_00116,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6449,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6452,StageoutWorker-3,unit.000000.clone_00112,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6452,StageoutWorker-2,unit.000000.clone_00111,drop clone,StageoutWorker
+81.6453,StageoutWorker-1,unit.000000.clone_00113,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6454,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6455,StageoutWorker-0,unit.000000.clone_00114,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6455,ExecWatcher-0,unit.000000.clone_00117,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6456,StageoutWorker-1,unit.000000.clone_00113,drop clone,StageoutWorker
+81.6457,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6458,ExecWatcher-0,unit.000000.clone_00118,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6459,StageoutWorker-2,unit.000000.clone_00115,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6459,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6461,StageoutWorker-3,unit.000000.clone_00112,drop clone,StageoutWorker
+81.6461,StageoutWorker-0,unit.000000.clone_00114,drop clone,StageoutWorker
+81.6462,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6464,ExecWatcher-0,unit.000000.clone_00119,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6466,StageoutWorker-1,unit.000000.clone_00116,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6466,StageoutWorker-2,unit.000000.clone_00115,drop clone,StageoutWorker
+81.6467,StageoutWorker-3,unit.000000.clone_00117,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6469,ExecWatcher-0,unit.000000.clone_00120,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6469,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6470,StageoutWorker-0,unit.000000.clone_00118,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6471,ExecWatcher-0,unit.000000.clone_00121,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6474,StageoutWorker-3,unit.000000.clone_00117,drop clone,StageoutWorker
+81.6474,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6475,ExecWatcher-0,unit.000000.clone_00122,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6478,StageoutWorker-2,unit.000000.clone_00119,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6479,ExecWatcher-0,unit.000000.clone_00123,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6480,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6481,StageoutWorker-3,unit.000000.clone_00120,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6482,StageoutWorker-1,unit.000000.clone_00116,drop clone,StageoutWorker
+81.6482,ExecWatcher-0,unit.000000.clone_00124,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6483,StageoutWorker-2,unit.000000.clone_00119,drop clone,StageoutWorker
+81.6485,ExecWatcher-0,unit.000000.clone_00125,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6486,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6488,StageoutWorker-0,unit.000000.clone_00118,drop clone,StageoutWorker
+81.6489,StageoutWorker-2,unit.000000.clone_00121,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6489,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6490,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6491,StageoutWorker-1,unit.000000.clone_00122,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6491,ExecWatcher-0,unit.000000.clone_00126,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6493,StageoutWorker-2,unit.000000.clone_00121,drop clone,StageoutWorker
+81.6493,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6495,StageoutWorker-3,unit.000000.clone_00120,drop clone,StageoutWorker
+81.6495,StageoutWorker-1,unit.000000.clone_00122,drop clone,StageoutWorker
+81.6496,ExecWatcher-0,unit.000000.clone_00127,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6498,ExecWatcher-0,unit.000000,put,ExecWatcher to stageout_queue (StagingOutput)
+81.6500,StageoutWorker-0,unit.000000.clone_00123,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6501,StageoutWorker-2,unit.000000.clone_00124,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6502,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6502,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6503,StageoutWorker-0,unit.000000.clone_00123,drop clone,StageoutWorker
+81.6503,StageoutWorker-2,unit.000000.clone_00124,drop clone,StageoutWorker
+81.6505,StageoutWorker-3,unit.000000.clone_00125,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6515,StageoutWorker-3,,debug,StageoutWorker drops with 1
+81.6515,StageoutWorker-3,unit.000000.clone_00125,drop clone,StageoutWorker
+81.6516,StageoutWorker-1,unit.000000.clone_00126,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6519,StageoutWorker-0,unit.000000.clone_00127,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6519,StageoutWorker-1,,debug,StageoutWorker drops with 1
+81.6520,StageoutWorker-0,,debug,StageoutWorker drops with 1
+81.6521,StageoutWorker-2,unit.000000,get,stageout_queue to StageoutWorker (StagingOutput)
+81.6521,StageoutWorker-0,unit.000000.clone_00127,drop clone,StageoutWorker
+81.6522,StageoutWorker-2,,debug,StageoutWorker drops with 1
+81.6522,StageoutWorker-1,unit.000000.clone_00126,drop clone,StageoutWorker
+81.6627,StageoutWorker-2,unit.000000,ExecWorker unit needs FTW_O ,
+81.6653,StageoutWorker-2,unit.000000,put,StageoutWorker to update_queue
+81.6654,StageoutWorker-2,,debug,update_queue drops with 1
+81.6972,UpdateWorker-3,unit.000000,get,update_queue to UpdateWorker
+81.6972,UpdateWorker-3,,debug,UpdateWorker drops with 1
+81.6973,UpdateWorker-3,unit.000000,unit update bulked (None),
+82.5502,UpdateWorker-3,,unit update bulk pushed (2),
+82.5502,UpdateWorker-3,unit.000000,unit update pushed (Allocating),
+82.5503,UpdateWorker-3,unit.000000,unit update pushed,
+82.5756,UpdateWorker-0,,unit update bulk pushed (2),
+82.5756,UpdateWorker-0,unit.000000,unit update pushed (Executing),
+82.5757,UpdateWorker-0,unit.000000,unit update pushed (StagingOutput),
+91.2500,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+91.3030,HeartbeatMonitor,,ingest_cmd,mongodb to HeartbeatMonitor (Cancel_Pilot:None)
+91.3031,HeartbeatMonitor,,stop request,
+91.3031,HeartbeatMonitor,,stop request,
+91.3965,MainThread,,stop request,
+91.3969,MainThread,,stop request,
+91.3975,MainThread,,stop request,
+91.3975,MainThread,,stop request,
+91.3976,MainThread,,stop request,
+91.3976,MainThread,,stop request,
+91.3977,MainThread,,stop request,
+91.3977,MainThread,,stop request,
+91.3978,MainThread,,stop request,
+91.3978,MainThread,,stop request,
+91.3979,MainThread,,stop request,
+91.3979,MainThread,,stop request,
+91.3979,MainThread,,stop request,
+91.3980,MainThread,,stop request,
+91.3980,MainThread,,stop request,
+91.3981,MainThread,,stop request,
+91.3981,MainThread,,stop request,
+91.3981,MainThread,,stop request,
+91.3982,MainThread,,stop request,
+91.3985,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+91.3985,MainThread,,get_cmd,execution_queue to ExecWorker (wakeup)
+91.3986,MainThread,,stop,
+91.3985,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+91.3987,CONTINUOUS,,stop,
+91.3990,StageinWorker-0,,get_cmd,stagein_queue to StageinWorker (wakeup)
+91.3991,StageoutWorker-3,,get_cmd,stageout_queue to StageoutWorker (wakeup)
+91.3992,StageinWorker-0,,stop,
+91.3993,StageoutWorker-3,,stop,
+91.4204,UpdateWorker-2,,stop,
+91.4967,ExecWatcher-2,,stop,
+91.4968,UpdateWorker-1,,stop,
+91.4969,UpdateWorker-0,,stop,
+91.4970,ExecWatcher-1,,stop,
+91.4970,ExecWatcher-3,,stop,
+91.4970,UpdateWorker-3,,stop,
+91.4977,ExecWatcher-0,,stop,

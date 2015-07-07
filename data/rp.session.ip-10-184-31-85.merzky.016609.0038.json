@@ -1,0 +1,300 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "commands": [
+                {
+                    "arg": null, 
+                    "time": 1435075766.999, 
+                    "type": "Cancel_Pilot"
+                }
+            ], 
+            "cores_per_node": 16, 
+            "description": {
+                "_config": {
+                    "blowup_factor": {
+                        "Agent": 128, 
+                        "ExecWatcher": 1, 
+                        "ExecWorker": 1, 
+                        "Scheduler": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1, 
+                        "execution_queue": 1, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "drop_clones": {
+                        "Agent": 1, 
+                        "ExecWatcher": 1, 
+                        "ExecWorker": 1, 
+                        "Scheduler": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1, 
+                        "execution_queue": 1, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "number_of_workers": {
+                        "ExecWorker": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1
+                    }
+                }, 
+                "_iterpos": 0, 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 128, 
+                "memory": null, 
+                "project": "TG-MCB090174", 
+                "queue": "normal", 
+                "resource": "xsede.stampede", 
+                "runtime": 30, 
+                "sandbox": null
+            }, 
+            "finished": 1435075765.117, 
+            "global_sandbox": "/work/01083/tg803521/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1435073810.426
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost//home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000//pilot_bootstrapper.sh).", 
+                    "timestamp": 1435073810.426
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/utils/radical.utils-0.28.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/).", 
+                    "timestamp": 1435073815.527
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/saga/saga-python-v0.28-16-gd61cef7-devel.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/).", 
+                    "timestamp": 1435073816.557
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.33-145-g688f18c-test-tmp-exec-dir.tar.gz' to sdist sandbox (sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/).", 
+                    "timestamp": 1435073819.005
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Queue': 'normal', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/', 'Project': 'TG-MCB090174', 'WallTimeLimit': 30, 'Arguments': ['-l pilot_bootstrapper.sh', \" -b 'radical.utils-0.28.tar.gz:saga-python-v0.28-16-gd61cef7-devel.tar.gz:radical.pilot-v0.33-145-g688f18c-test-tmp-exec-dir.tar.gz' -c '128' -d '10' -g '/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments' -j 'SSH' -k 'MPIRUN_RSH' -l 'SLURM' -m '54.221.194.147:24242' -n 'am_experiments' -o 'POPEN' -p 'pilot.0000' -q 'CONTINUOUS' -r '30' -s 'rp.session.ip-10-184-31-85.merzky.016609.0038' -t 'multicore' -u 'create' -v 'local' -e 'module purge' -e 'module load TACC' -e 'module load cluster' -e 'module load Linux' -e 'module load mvapich2' -e 'module load python' -e 'module unload xalt' -e 'export TACC_DELETE_FILES=TRUE'\"], 'Error': 'agent.err', 'Output': 'agent.out', 'TotalCPUCount': 128}", 
+                    "timestamp": 1435073823.057
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [slurm+ssh://stampede.tacc.utexas.edu/]-[5432382]", 
+                    "timestamp": 1435073837.323
+                }, 
+                {
+                    "message": "ERROR in agent main loop: need more than 1 value to unpack. Traceback (most recent call last):\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5298, in run\n    action = self._check_units()\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5406, in _check_units\n    _cu_list, _ = rpu.blowup(self._config, cu, AGENT)\nValueError: need more than 1 value to unpack\n", 
+                    "timestamp": 1435075765.117
+                }, 
+                {
+                    "message": "real 0.710623 sec | user 0.320 sec | system 0.349 sec | mem 42832.00 kB", 
+                    "timestamp": 1435075765.117
+                }
+            ], 
+            "logfile": "[... CONTENT SHORTENED ...]\nBUG - {'timestamp': datetime.datetime(2015, 6, 23, 16, 9, 24, 751759), 'slotstate': '|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015-06-23 11:09:24,842 - radical.pilot.agent - INFO - Agent pilot.0000 starting ...\n2015-06-23 11:09:24,933 - radical.pilot.agent - INFO - Database updated: {'updatedExisting': True, u'nModified': 1, u'ok': 1, u'n': 1}\n2015-06-23 11:09:25,117 - radical.pilot.agent - ERROR - ERROR in agent main loop: need more than 1 value to unpack. Traceback (most recent call last):\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5298, in run\n    action = self._check_units()\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5406, in _check_units\n    _cu_list, _ = rpu.blowup(self._config, cu, AGENT)\nValueError: need more than 1 value to unpack\n\n", 
+            "nodes": [
+                "c410-901", 
+                "c413-801", 
+                "c415-303", 
+                "c416-403", 
+                "c417-102", 
+                "c418-502", 
+                "c419-204", 
+                "c420-002"
+            ], 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "55897d0f23769c28b7143d65", 
+            "saga_job_id": "[slurm+ssh://stampede.tacc.utexas.edu/]-[5432382]", 
+            "sagajobid": null, 
+            "sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/", 
+            "started": 1435075764.842, 
+            "state": "Failed", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1435073810.139
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1435073810.423
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1435073837.326
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1435075764.842
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1435075765.117
+                }
+            ], 
+            "stderr": "[... CONTENT SHORTENED ...]\n4, 751759), 'slotstate': '|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015:06:23 11:09:24 36497  MainThread   radical.pilot.agent   : [INFO    ] Agent pilot.0000 starting ...\n2015:06:23 11:09:24 36497  MainThread   radical.pilot.agent   : [INFO    ] Database updated: {'updatedExisting': True, u'nModified': 1, u'ok': 1, u'n': 1}\n2015:06:23 11:09:25 36497  MainThread   radical.pilot.agent   : [ERROR   ] ERROR in agent main loop: need more than 1 value to unpack. Traceback (most recent call last):\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5298, in run\n    action = self._check_units()\n  File \"/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/bin/radical-pilot-agent-multicore.py\", line 5406, in _check_units\n    _cu_list, _ = rpu.blowup(self._config, cu, AGENT)\nValueError: need more than 1 value to unpack\n\n", 
+            "stdout": "[... CONTENT SHORTENED ...]\ntg803521/radical.pilot.sandbox/ve_stampede_experiments/lib/python2.7/lib-old', '/work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/lib/python2.7/lib-dynload', '/opt/apps/intel13/python/2.7.9/lib/python2.7', '/opt/apps/intel13/python/2.7.9/lib/python2.7/plat-linux2', '/opt/apps/intel13/python/2.7.9/lib/python2.7/lib-tk']\npython: 2.7.9 (default, Apr 26 2015, 12:52:46) \n[GCC Intel(R) C++ gcc 4.4 mode]\nutils : 0.28  : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/radical/utils/__init__.pyc\nsaga  : v0.28-16-gd61cef7@devel : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/saga/__init__.pyc\npilot : v0.33-145-g688f18c@test-tmp_exec_dir : /work/01083/tg803521/radical.pilot.sandbox/ve_stampede_experiments/rp_install/lib/python2.7/site-packages/radical/pilot/__init__.pyc\n        type  : multicore\n        gitid : $Id$\n\n---------------------------------------------------------------------\n\n", 
+            "submitted": 1435073810.141, 
+            "unit_ids": [
+                "unit.000000"
+            ], 
+            "unitmanager": "55897d1223769c28b7143d66"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "55897d0f23769c28b7143d65", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.ip-10-184-31-85.merzky.016609.0038", 
+        "connected": 1435073807.384, 
+        "created": 1435073807.384, 
+        "name": "rp.session.ip-10-184-31-85.merzky.016609.0038"
+    }, 
+    "umgr": [
+        {
+            "_id": "55897d1223769c28b7143d66", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "round_robin"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [], 
+            "Agent_Input_Status": null, 
+            "Agent_Output_Directives": [], 
+            "Agent_Output_Status": null, 
+            "FTW_Input_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "/tmp/input_1.dat", 
+                    "state": "Done", 
+                    "target": "input_1.dat"
+                }
+            ], 
+            "FTW_Input_Status": "Done", 
+            "FTW_Output_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "input_1.dat", 
+                    "state": "Pending", 
+                    "target": "input_1.dat"
+                }
+            ], 
+            "FTW_Output_Status": "New", 
+            "_id": "unit.000000", 
+            "description": {
+                "arguments": [
+                    "0"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sleep", 
+                "input_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "/tmp/input_1.dat", 
+                        "target": "input_1.dat"
+                    }
+                ], 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "input_1.dat", 
+                        "target": "input_1.dat"
+                    }
+                ], 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1435073810.221
+                }, 
+                {
+                    "message": "Transferring input file file://localhost//tmp/input_1.dat -> sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000//unit.000000/input_1.dat", 
+                    "timestamp": 1435073817.939
+                }, 
+                {
+                    "message": "All FTW Input Staging Directives done - 1.", 
+                    "timestamp": 1435073818.228
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://stampede.tacc.utexas.edu/work/01083/tg803521/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016609.0038-pilot.0000//unit.000000", 
+            "started": null, 
+            "state": "Allocating", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1435073810.215
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1435073811.172
+                }, 
+                {
+                    "state": "PendingExecution", 
+                    "timestamp": 1435073818.229
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1435075765.025
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1435073810.217, 
+            "unitmanager": "55897d1223769c28b7143d66"
+        }
+    ]
+}
