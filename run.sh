@@ -9,14 +9,15 @@ COMPONENTS='agent staging_input scheduling execution staging_output update'
 REPS=1
 
 # target resource
-RESOURCE='local'
+# RESOURCE='local'
+RESOURCE='stampede'
 
 # compute unit load
 CU_LOAD='sleep_%s.json'
 
 # experiment sizes
+# SIZES="128: 512: 1024:"
 SIZES="128:development 512:development 1024:normal"
-SIZES="128: 512: 1024:"
 
 # number of workers
 WORKERS="1 4 8"
@@ -78,7 +79,7 @@ do
                         echo "running experiment $tag"
 
                         rm -rf $HOME/.saga/adaptors/shell_job/
-                        killall -9 python
+                        killall -9 -q -u merzky python
                         sleep 1
         
                         python experiment.py       \
