@@ -1,0 +1,118 @@
+time,component,uid,event,message
+0.0000,Bootstrapper,pilot.0000,bootstrap start,
+0.0000,Bootstrapper,pilot.0000,virtenv_setup start,
+1.0000,Bootstrapper,pilot.0000,rp_install start,
+3.0000,Bootstrapper,pilot.0000,rp_install done,
+3.0000,Bootstrapper,pilot.0000,virtenv_setup end,
+4.0000,Bootstrapper,pilot.0000,agent start,
+4.2141,MainThread,pilot.0000,start,None
+4.2163,MainThread,,db setup,
+4.2176,MainThread,,Agent create,
+4.2176,MainThread,,Agent init,
+4.2221,MainThread,,start,
+4.2223,CONTINUOUS,,run,
+4.2230,StageinWorker-0,,run,
+4.2230,MainThread,,ExecWorker init,
+4.2231,MainThread,,ExecWorker init,
+4.2234,ExecWorker-0,,run,
+4.2267,StageoutWorker-0,,run,
+4.2284,UpdateWorker-0,,run,
+4.2290,HeartbeatMonitor,,run,
+4.2290,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+4.2295,MainThread,,Agent init done,
+4.2295,MainThread,,run,
+4.2371,MainThread,,Agent get units,bulk size: 0
+4.2375,MainThread,unit.000000,get,MongoDB to Agent (PendingExecution)
+4.2375,MainThread,,debug,Agent drops with 0
+4.2375,MainThread,unit.000000,Agent get unit meta,
+4.2377,MainThread,unit.000000,Agent get unit mkdir,
+4.2378,MainThread,unit.000000,put,Agent to update_queue (Allocating)
+4.2378,MainThread,,debug,update_queue drops with 1
+4.2390,MainThread,,debug,schedule_queue drops with 1
+4.2390,MainThread,unit.000000,put,Agent to schedule_queue (Allocating)
+4.2400,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (schedule)
+4.2401,CONTINUOUS,unit.000000,get,schedule_queue to Scheduler (Allocating)
+4.2401,CONTINUOUS,,debug,Scheduler drops with 0
+4.2422,CONTINUOUS,unit.000000,schedule,allocated
+4.2429,CONTINUOUS,,debug,execution_queue drops with 1
+4.2430,CONTINUOUS,unit.000000,put,Scheduler to execution_queue (Allocating)
+4.2442,CONTINUOUS,,unschedule,
+4.2449,CONTINUOUS,,unschedule done - reschedule,
+4.2449,CONTINUOUS,,stop,
+4.3296,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Allocating)
+4.3297,UpdateWorker-0,,debug,UpdateWorker drops with 0
+4.3314,UpdateWorker-0,unit.000000,unit update bulked (Allocating),
+5.3365,UpdateWorker-0,,unit update bulk pushed (1),
+5.3365,UpdateWorker-0,unit.000000,unit update pushed (Allocating),
+5.7026,ExecWatcher-0,,run,
+5.7028,ExecWorker-0,,run setup done,
+5.7032,ExecWorker-0,unit.000000,get,executing_queue to ExecutionWorker (Executing)
+5.7032,ExecWorker-0,,debug,ExecWorker drops with 0
+5.7033,ExecWorker-0,unit.000000,ExecWorker unit launch,
+5.7033,ExecWorker-0,unit.000000,ExecWorker spawn,
+5.7033,ExecWorker-0,unit.000000,launch script constructed,
+5.8192,ExecWorker-0,unit.000000,spawning passed to pty,
+5.8192,ExecWorker-0,unit.000000,put,ExecWorker to watcher (Executing)
+5.8192,ExecWorker-0,unit.000000,put,ExecWorker to update_queue (Executing)
+5.8193,ExecWorker-0,,debug,update_queue drops with 1
+5.8393,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Executing)
+5.8394,UpdateWorker-0,,debug,UpdateWorker drops with 0
+5.8395,UpdateWorker-0,unit.000000,unit update bulked (Executing),
+6.3442,UpdateWorker-0,,unit update bulk pushed (1),
+6.3443,UpdateWorker-0,unit.000000,unit update pushed (Executing),
+6.8130,ExecWatcher-0,unit.000000,get,ExecWatcher picked up unit
+6.8133,ExecWatcher-0,unit.000000,execution complete,
+6.8134,ExecWatcher-0,unit.000000,put,ExecWatcher to update_queue (StagingOutput)
+6.8134,ExecWatcher-0,,debug,update_queue drops with 1
+6.8134,ExecWatcher-0,,debug,stageout_queue drops with 1
+6.8135,ExecWatcher-0,unit.000000,put,ExecWatcher to stageout_queue (StagingOutput)
+6.8148,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (unschedule)
+6.8149,CONTINUOUS,unit.000000,schedule,unit deallocation
+6.8149,CONTINUOUS,,unschedule,
+6.8152,CONTINUOUS,,put_cmd,Scheduler to schedule_queue (reschedule)
+6.8155,CONTINUOUS,,unschedule done - reschedule,
+6.8155,CONTINUOUS,,stop,
+6.8166,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (reschedule)
+6.8166,CONTINUOUS,,reschedule,
+6.8171,CONTINUOUS,,reschedule done,
+6.8171,CONTINUOUS,,stop,
+6.8173,StageoutWorker-0,unit.000000,get,stageout_queue to StageoutWorker (StagingOutput)
+6.8173,StageoutWorker-0,,debug,StageoutWorker drops with 0
+6.8175,StageoutWorker-0,unit.000000,ExecWorker unit needs FTW_O ,
+6.8175,StageoutWorker-0,unit.000000,put,StageoutWorker to update_queue
+6.8175,StageoutWorker-0,,debug,update_queue drops with 1
+6.8486,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (StagingOutput)
+6.8486,UpdateWorker-0,,debug,UpdateWorker drops with 0
+6.8487,UpdateWorker-0,unit.000000,unit update bulked (StagingOutput),
+6.8488,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker
+6.8488,UpdateWorker-0,,debug,UpdateWorker drops with 0
+6.8488,UpdateWorker-0,unit.000000,unit update bulked (None),
+7.3520,UpdateWorker-0,,unit update bulk pushed (2),
+7.3520,UpdateWorker-0,unit.000000,unit update pushed (StagingOutput),
+7.3521,UpdateWorker-0,unit.000000,unit update pushed,
+14.2316,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+24.2416,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+24.2431,HeartbeatMonitor,,ingest_cmd,mongodb to HeartbeatMonitor (Cancel_Pilot:None)
+24.2431,HeartbeatMonitor,,stop request,
+24.2432,HeartbeatMonitor,,stop request,
+24.3211,MainThread,,stop request,
+24.3212,MainThread,,stop request,
+24.3213,MainThread,,stop request,
+24.3213,MainThread,,stop request,
+24.3213,MainThread,,stop request,
+24.3214,MainThread,,stop request,
+24.3214,MainThread,,stop request,
+24.3231,ExecWorker-0,,get_cmd,execution_queue to ExecWorker (wakeup)
+24.3233,ExecWorker-0,,stop,
+24.3238,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+24.3239,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+24.3239,CONTINUOUS,,stop,
+24.3243,StageoutWorker-0,,get_cmd,stageout_queue to StageoutWorker (wakeup)
+24.3243,StageoutWorker-0,,stop,
+24.3242,StageinWorker-0,,get_cmd,stagein_queue to StageinWorker (wakeup)
+24.3244,StageinWorker-0,,stop,
+24.3582,UpdateWorker-0,,stop,
+24.3594,MainThread,,stop,
+24.3596,MainThread,,stop,finally clause
+25.0000,Bootstrapper,pilot.0000,cleanup start,
+25.0000,Bootstrapper,pilot.0000,cleanup done,

@@ -6,16 +6,17 @@
 COMPONENTS='agent staging_input scheduling execution staging_output update'
 
 # number of repetitions
-REPS=3
+REPS=1
 
 # target resource
-RESOURCE='stampede'
+RESOURCE='local'
 
 # compute unit load
 CU_LOAD='sleep_%s.json'
 
 # experiment sizes
 SIZES="128:development 512:development 1024:normal"
+SIZES="128: 512: 1024:"
 
 # number of workers
 WORKERS="1 4 8"
@@ -61,19 +62,24 @@ do
                 i=0
                 while ! test $i = "$REPS"
                 do
-                    rm -rf $HOME/.saga/adaptors/shell_job/
-        
                     i=$((i+1))
                     exp="${c}_${RESOURCE}_${s}_${d}_${w}_${i}"
                     log="log/$exp.log"
                     load=`printf "$CU_LOAD" $d`
 
-                    if test -f "$log"
+                    tag="$RESOURCE : $c : $s : $d : $w : $i :"
+                    grep "$tag" experiment.sids >/dev/null
+
+                    if test $? = 0
                     then
-                        echo "log exists - skipping experiment $exp"
+                        echo "tag exists - skipping experiment $tag"
 
                     else
-                        echo "running experiment $exp"
+                        echo "running experiment $tag"
+
+                        rm -rf $HOME/.saga/adaptors/shell_job/
+                        killall -9 python
+                        sleep 1
         
                         python experiment.py       \
                             -a "agent_config.json" \
@@ -88,10 +94,11 @@ do
                         sid=`grep 'session id:' $log | tail -n 1 | cut -f 2 -d :`
                         sid=`echo $sid` # trim white spaces
         
-                        echo "$RESOURCE : $c : $s : $d : $w : $i : $sid" | tee -a experiment.sids
+                        echo "$tag $sid" | tee -a experiment.sids
         
                         radicalpilot-stats -m prof -s "$sid" -p "data/"
-
+                        radicalpilot-close-session -m export -s "$sid" 
+                        mv -v "$sid".json data/
                     fi
                 done
             done

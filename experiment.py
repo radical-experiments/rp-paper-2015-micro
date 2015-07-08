@@ -4,6 +4,7 @@ __copyright__ = "Copyright 2013-2014, http://radical.rutgers.edu"
 __license__   = "MIT"
 
 import sys
+import time
 import radical.pilot as rp
 import radical.utils as ru
 
@@ -120,7 +121,7 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 #------------------------------------------------------------------------------
 #
 def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config, 
-        scheduleri, queue=None):
+        scheduler, queue=None):
 
     # Create a new session. No need to try/except this: if session creation
     # fails, there is not much we can do anyways...
@@ -161,8 +162,7 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
                     'target': 'staging:///f1',
                     'action': rp.TRANSFER
                     }
-          # pilot.stage_in (input_sd_pilot)
-
+            pilot.stage_in (input_sd_pilot)
             pilots.append (pilot)
 
 
@@ -172,7 +172,7 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
         umgr.add_pilots(pilots)
 
         input_sd_umgr   = {'source':'/etc/group',    'target': 'f2',                'action': rp.TRANSFER}
-        input_sd_agent  = {'source':'staging:///f1', 'target': 'f1',                'action': rp.COPY}
+        input_sd_agent  = {'source':'staging:///f1', 'target': 'f1',                'action': rp.LINK}
         output_sd_agent = {'source':'f1',            'target': 'staging:///f1.bak', 'action': rp.COPY}
         output_sd_umgr  = {'source':'f2',            'target': 'f2.bak',            'action': rp.TRANSFER}
 
@@ -182,8 +182,8 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
             cud.executable     = cu_load['executable']
             cud.arguments      = cu_load['arguments']
             cud.cores          = cu_load['cores']
-            cud.input_staging  = cu_load.get('inputs')
-            cud.output_staging = cu_load.get('outputs')
+            cud.input_staging  = [ input_sd_umgr,  input_sd_agent]
+            cud.output_staging = [output_sd_umgr, output_sd_agent]
             cuds.append(cud)
 
         units = umgr.submit_units(cuds)
@@ -213,6 +213,7 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
         # always clean up the session, no matter if we caught an exception or
         # not.
         print "closing session"
+        time.sleep (10) # give time to finish clones...
         session.close (cleanup=False) # keep the DB entries...
 
 
@@ -246,7 +247,6 @@ if __name__ == "__main__":
     scheduler = options.scheduler
     queue     = options.queue
 
-    
     if   scheduler == 'direct'     : scheduler = rp.SCHED_DIRECT
     elif scheduler == 'backfilling': scheduler = rp.SCHED_BACKFILLING
     elif scheduler == 'round_robin': scheduler = rp.SCHED_ROUND_ROBIN
@@ -258,13 +258,15 @@ if __name__ == "__main__":
     if not resources: raise ValueError ("need target resource")
     if not load     : raise ValueError ("need load config")
     if not agent    : raise ValueError ("need agent config")
+
+    if not queue    : queue = None
     
     resources = resources.split(',')
 
     for resource in resources:
         if not resource in RESOURCES:
             raise ValueError ("unknown resource %s" % resource)
-    
+
     cu_load      = ru.read_json (load)
     agent_config = ru.read_json (agent)
 
