@@ -108,7 +108,7 @@ def unit_state_cb (unit, state):
 
     if state == rp.FAILED:
         print "stderr: %s" % unit.stderr
-        sys.exit(2)
+      # sys.exit(2)
 
 
 #------------------------------------------------------------------------------

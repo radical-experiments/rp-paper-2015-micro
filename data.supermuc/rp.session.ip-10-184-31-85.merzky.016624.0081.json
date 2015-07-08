@@ -1,0 +1,446 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "callbackhistory": [
+                {
+                    "state": "Launching", 
+                    "timestamp": 1436394631.192
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1436394649.231
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1436394672.282
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1436394692.325
+                }
+            ], 
+            "commands": [], 
+            "cores_per_node": 16, 
+            "description": {
+                "_config": {
+                    "blowup_factor": {
+                        "Agent": 512, 
+                        "ExecWatcher": 1, 
+                        "ExecWorker": 1, 
+                        "Scheduler": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1, 
+                        "execution_queue": 1, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "drop_clones": {
+                        "Agent": 0, 
+                        "ExecWatcher": 0, 
+                        "ExecWorker": 0, 
+                        "Scheduler": 0, 
+                        "StageinWorker": 0, 
+                        "StageoutWorker": 0, 
+                        "UpdateWorker": 0, 
+                        "execution_queue": 1, 
+                        "schedule_queue": 1, 
+                        "stagein_queue": 1, 
+                        "stageout_queue": 1, 
+                        "update_queue": 1, 
+                        "watch_queue": 1
+                    }, 
+                    "number_of_workers": {
+                        "ExecWorker": 1, 
+                        "StageinWorker": 1, 
+                        "StageoutWorker": 1, 
+                        "UpdateWorker": 1
+                    }
+                }, 
+                "_iterpos": 0, 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 512, 
+                "memory": null, 
+                "project": "e290", 
+                "queue": "test", 
+                "resource": "lrz.supermuc", 
+                "runtime": 30, 
+                "sandbox": null
+            }, 
+            "finished": 1436394692.346, 
+            "global_sandbox": "/home/hpc/pr87be/di29suh/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1436394631.194
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost//home/merzky/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000//pilot_bootstrapper.sh).", 
+                    "timestamp": 1436394631.195
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/utils/radical.utils-0.28.tar.gz' to sdist sandbox (gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/).", 
+                    "timestamp": 1436394636.016
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/saga/saga-python-v0.28-16-gd61cef7-devel.tar.gz' to sdist sandbox (gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/).", 
+                    "timestamp": 1436394637.119
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost//home/merzky/ve/local/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.33-160-ge2aed17-feature-plots.tar.gz' to sdist sandbox (gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/).", 
+                    "timestamp": 1436394639.622
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'e290', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/', 'Queue': 'test', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 30, 'Arguments': ['-l pilot_bootstrapper.sh', \" -b 'radical.utils-0.28.tar.gz:saga-python-v0.28-16-gd61cef7-devel.tar.gz:radical.pilot-v0.33-160-ge2aed17-feature-plots.tar.gz' -c '512' -d '10' -g '/home/hpc/pr87be/di29suh/ve_supermuc_shared_20150505' -j 'SSH' -k 'MPIEXEC' -l 'LOADL' -m '54.221.194.147:24242' -n 'am_experiments' -o 'POPEN' -p 'pilot.0000' -q 'CONTINUOUS' -r '30' -s 'rp.session.ip-10-184-31-85.merzky.016624.0081' -t 'multicore' -u 'use' -v 'debug' -e 'source /etc/profile' -e 'source /etc/profile.d/modules.sh' -e 'module load python/2.7.6' -e 'module unload mpi.ibm' -e 'module load mpi.intel' -f 'login03'\"], 'Error': 'agent.err', 'Output': 'agent.out', 'TotalCPUCount': 512}", 
+                    "timestamp": 1436394644.173
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [loadl+gsissh://supermuc.lrz.de:2222/?energy_policy_tag=radical_pilot&island_count=1&node_usage=not_shared&network_mpi=sn_all,not_shared,us]-[srv04-ib.820523]", 
+                    "timestamp": 1436394648.675
+                }, 
+                {
+                    "message": "CANCEL received. Terminating.", 
+                    "timestamp": 1436394691.998
+                }, 
+                {
+                    "message": "real 43.044697 sec | user 0.408 sec | system 0.276 sec | mem 37688.00 kB", 
+                    "timestamp": 1436394691.998
+                }, 
+                {
+                    "message": "Terminated (_terminate set).", 
+                    "timestamp": 1436394692.346
+                }, 
+                {
+                    "message": "real 43.348728 sec | user 0.412 sec | system 0.280 sec | mem 37772.00 kB", 
+                    "timestamp": 1436394692.346
+                }
+            ], 
+            "logfile": "[... CONTENT SHORTENED ...]\nedule: {'timestamp': datetime.datetime(2015, 7, 8, 22, 31, 15, 96690), 'slotstate': '|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015-07-09 00:31:15,985 - radical.pilot.agent - DEBUG - bulk update result: {'nModified': 2, 'nUpserted': 0, 'nMatched': 2, 'writeErrors': [], 'upserted': [], 'writeConcernErrors': [], 'nRemoved': 0, 'nInserted': 0}\n2015-07-09 00:31:31,997 - radical.pilot.agent - WARNING - CANCEL received. Terminating.\n2015-07-09 00:31:32,346 - radical.pilot.agent - WARNING - Terminated (_terminate set).\n", 
+            "nodes": [
+                "i19r01c21-ib", 
+                "i19r01a33-ib", 
+                "i19r01a37-ib", 
+                "i19r01c15-ib", 
+                "i19r01a22-ib", 
+                "i19r01a18-ib", 
+                "i19r01a19-ib", 
+                "i19r01c18-ib", 
+                "i19r01c11-ib", 
+                "i19r01a34-ib", 
+                "i19r01c16-ib", 
+                "i19r01a38-ib", 
+                "i19r01c08-ib", 
+                "i19r01a35-ib", 
+                "i19r01a36-ib", 
+                "i19r01c03-ib", 
+                "i19r01c17-ib", 
+                "i19r01a17-ib", 
+                "i19r01a32-ib", 
+                "i19r01c06-ib", 
+                "i19r01a23-ib", 
+                "i19r01c05-ib", 
+                "i19r01c14-ib", 
+                "i19r01c20-ib", 
+                "i19r01a21-ib", 
+                "i19r01a20-ib", 
+                "i19r01a16-ib", 
+                "i19r01c04-ib", 
+                "i19r01c10-ib", 
+                "i19r01c09-ib", 
+                "i19r01c07-ib", 
+                "i19r01c19-ib"
+            ], 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "559da48523769c022cc779cc", 
+            "saga_job_id": "[loadl+gsissh://supermuc.lrz.de:2222/?energy_policy_tag=radical_pilot&island_count=1&node_usage=not_shared&network_mpi=sn_all,not_shared,us]-[srv04-ib.820523]", 
+            "sagajobid": null, 
+            "sandbox": "gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/", 
+            "started": 1436394671.684, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1436394630.719
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1436394631.186
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1436394648.676
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1436394671.684
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1436394691.998
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1436394692.346
+                }
+            ], 
+            "stderr": "[... CONTENT SHORTENED ...]\n15, 96690), 'slotstate': '|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|----------------|'}\n2015:07:09 00:31:15 32079  UpdateWorker-0 radical.pilot.agent   : [DEBUG   ] bulk update result: {'nModified': 2, 'nUpserted': 0, 'nMatched': 2, 'writeErrors': [], 'upserted': [], 'writeConcernErrors': [], 'nRemoved': 0, 'nInserted': 0}\n2015:07:09 00:31:31 32079  HeartbeatMonitor radical.pilot.agent   : [WARNING ] CANCEL received. Terminating.\n2015:07:09 00:31:32 32079  MainThread   radical.pilot.agent   : [WARNING ] Terminated (_terminate set).\n", 
+            "stdout": "[... CONTENT SHORTENED ...]\nilot.0000/rp_install/lib/python2.7/site-packages/radical/utils/__init__.pyc\nsaga  :  v0.28-16-gd61cef7@devel /home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/rp_install/lib/python2.7/site-packages/saga/__init__.pyc\npilot :  v0.33-160-ge2aed17@feature-plots /home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/rp_install/lib/python2.7/site-packages/radical/pilot/__init__.pyc\ninstall ok!\n\n---------------------------------------------------------------------\n\n\n# -------------------------------------------------------------------\n# Launching radical-pilot-agent for 512 cores.\n# CMDLINE: python /home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000//rp_install/bin/radical-pilot-agent-multicore.py -c 512 -d 10 -j SSH -k MPIEXEC -l LOADL -m 127.0.0.1:23000 -n am_experiments -o POPEN -p pilot.0000 -q CONTINUOUS -s rp.session.ip-10-184-31-85.merzky.016624.0081 -r 30\n", 
+            "submitted": 1436394630.721, 
+            "unit_ids": [
+                "unit.000000"
+            ], 
+            "unitmanager": "559da48b23769c022cc779cd"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "559da48523769c022cc779cc", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.ip-10-184-31-85.merzky.016624.0081", 
+        "connected": 1436394629.163, 
+        "created": 1436394629.163, 
+        "name": "rp.session.ip-10-184-31-85.merzky.016624.0081"
+    }, 
+    "umgr": [
+        {
+            "_id": "559da48b23769c022cc779cd", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "round_robin"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [
+                {
+                    "action": "Link", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "staging:///f1", 
+                    "state": "Done", 
+                    "target": "f1"
+                }
+            ], 
+            "Agent_Input_Status": "Done", 
+            "Agent_Output_Directives": [
+                {
+                    "action": "Copy", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f1", 
+                    "state": "Pending", 
+                    "target": "staging:///f1.bak"
+                }
+            ], 
+            "Agent_Output_Status": "New", 
+            "FTW_Input_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "/etc/group", 
+                    "state": "Done", 
+                    "target": "f2"
+                }
+            ], 
+            "FTW_Input_Status": "Done", 
+            "FTW_Output_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f2", 
+                    "state": "Pending", 
+                    "target": "f2.bak"
+                }
+            ], 
+            "FTW_Output_Status": "New", 
+            "_id": "unit.000000", 
+            "callbackhistory": [
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1436394636.1
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1436394675.198
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1436394676.202
+                }
+            ], 
+            "description": {
+                "arguments": [
+                    "0"
+                ], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/sleep", 
+                "input_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "/etc/group", 
+                        "target": "f2"
+                    }, 
+                    {
+                        "action": "Link", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "staging:///f1", 
+                        "target": "f1"
+                    }
+                ], 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f2", 
+                        "target": "f2.bak"
+                    }, 
+                    {
+                        "action": "Copy", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f1", 
+                        "target": "staging:///f1.bak"
+                    }
+                ], 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1436394635.12
+                }, 
+                {
+                    "message": "Transferring input file file://localhost//etc/group -> gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000//unit.000000/f2", 
+                    "timestamp": 1436394639.137
+                }, 
+                {
+                    "message": "All FTW Input Staging Directives done - 1.", 
+                    "timestamp": 1436394640.116
+                }, 
+                {
+                    "message": "unit needs input staging", 
+                    "timestamp": 1436394672.405
+                }, 
+                {
+                    "message": "Link'ed /home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/staging_area/f1 to /home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/unit.000000/f1 - success", 
+                    "timestamp": 1436394672.409
+                }, 
+                {
+                    "message": "unit needs no input staging", 
+                    "timestamp": 1436394674.859
+                }, 
+                {
+                    "message": "unit execution start", 
+                    "timestamp": 1436394674.878
+                }, 
+                {
+                    "message": "unit execution failed", 
+                    "timestamp": 1436394675.094
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "gsisftp://supermuc.lrz.de:2222/home/hpc/pr87be/di29suh/radical.pilot.sandbox/rp.session.ip-10-184-31-85.merzky.016624.0081-pilot.0000//unit.000000", 
+            "started": null, 
+            "state": "Failed", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1436394635.113
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1436394636.09
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1436394672.208
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1436394672.404
+                }, 
+                {
+                    "state": "PendingExecution", 
+                    "timestamp": 1436394674.256
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1436394674.664
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1436394674.859
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1436394674.878
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1436394675.094
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1436394635.115, 
+            "unitmanager": "559da48b23769c022cc779cd"
+        }
+    ]
+}

@@ -1,0 +1,134 @@
+time,component,uid,event,message
+1.0000,Bootstrapper,pilot.0000,bootstrap start,
+1.0000,Bootstrapper,pilot.0000,tunnel setup start,
+1.0000,Bootstrapper,pilot.0000,tunnel setup done,
+1.0000,Bootstrapper,pilot.0000,virtenv_setup start,
+3.0000,Bootstrapper,pilot.0000,rp_install start,
+14.0000,Bootstrapper,pilot.0000,rp_install done,
+14.0000,Bootstrapper,pilot.0000,virtenv_setup end,
+16.0000,Bootstrapper,pilot.0000,agent start,
+16.9967,MainThread,pilot.0000,start,None
+17.0176,MainThread,,db setup,
+17.2172,MainThread,,Agent create,
+17.2173,MainThread,,Agent init,
+22.4248,MainThread,,start,
+22.4256,CONTINUOUS,,run,
+22.4301,StageinWorker-0,,run,
+22.4302,MainThread,,ExecWorker init,
+22.4327,MainThread,,ExecWorker init,
+22.4332,ExecWatcher-0,,run,
+22.4337,ExecWorker-0,,run,
+22.4341,StageoutWorker-0,,run,
+22.6297,UpdateWorker-0,,run,
+22.6303,HeartbeatMonitor,,run,
+22.6303,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+22.6313,MainThread,,Agent init done,
+22.6316,MainThread,,run,
+23.3520,MainThread,,Agent get units,bulk size: 0
+23.3525,MainThread,unit.000000,get,MongoDB to Agent (StagingInput)
+23.3525,MainThread,,debug,Agent drops with 1
+23.3526,MainThread,unit.000000,Agent get unit meta,
+23.3532,MainThread,unit.000000,Agent get unit mkdir,
+23.3533,MainThread,unit.000000,put,Agent to update_queue (StagingInput)
+23.3533,MainThread,,debug,update_queue drops with 1
+23.3534,MainThread,,debug,stagein_queue drops with 1
+23.3534,MainThread,unit.000000,put,Agent to stagein_queue (StagingInput)
+23.3540,StageinWorker-0,unit.000000,get,stagein_queue to StageinWorker (StagingInput)
+23.3541,StageinWorker-0,,debug,StageinWorker drops with 1
+23.3542,StageinWorker-0,unit.000000,Agent input_staging queue,staging:///f1 -> f1
+23.3602,StageinWorker-0,unit.000000,put,StageinWorker to update_queue
+23.3603,StageinWorker-0,,debug,update_queue drops with 1
+23.4315,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (StagingInput)
+23.4315,UpdateWorker-0,,debug,UpdateWorker drops with 1
+23.4318,UpdateWorker-0,unit.000000,unit update bulked (StagingInput),
+23.4319,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker
+23.4319,UpdateWorker-0,,debug,UpdateWorker drops with 1
+23.4320,UpdateWorker-0,unit.000000,unit update bulked (None),
+24.5329,UpdateWorker-0,,unit update bulk pushed (2),
+24.5329,UpdateWorker-0,unit.000000,unit update pushed (StagingInput),
+24.5329,UpdateWorker-0,unit.000000,unit update pushed,
+24.9226,MainThread,,Agent get units,bulk size: 0
+24.9229,MainThread,unit.000000,get,MongoDB to Agent (PendingExecution)
+24.9230,MainThread,,debug,Agent drops with 1
+24.9230,MainThread,unit.000000,Agent get unit meta,
+24.9237,MainThread,unit.000000,Agent get unit mkdir,
+24.9237,MainThread,unit.000000,put,Agent to update_queue (Allocating)
+24.9238,MainThread,,debug,update_queue drops with 1
+24.9238,MainThread,,debug,schedule_queue drops with 1
+24.9239,MainThread,unit.000000,put,Agent to schedule_queue (Allocating)
+24.9244,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (schedule)
+24.9245,CONTINUOUS,unit.000000,get,schedule_queue to Scheduler (Allocating)
+24.9245,CONTINUOUS,,debug,Scheduler drops with 1
+24.9254,CONTINUOUS,unit.000000,schedule,allocated
+24.9258,CONTINUOUS,,debug,execution_queue drops with 1
+24.9258,CONTINUOUS,unit.000000,put,Scheduler to execution_queue (Allocating)
+24.9259,CONTINUOUS,,unschedule,
+24.9267,ExecWorker-0,unit.000000,get,executing_queue to ExecutionWorker (Executing)
+24.9268,CONTINUOUS,,unschedule done - reschedule,
+24.9268,CONTINUOUS,,stop,
+24.9269,ExecWorker-0,,debug,ExecWorker drops with 1
+24.9272,ExecWorker-0,unit.000000,ExecWorker unit launch,
+24.9272,ExecWorker-0,unit.000000,ExecWorker spawn,
+24.9287,ExecWorker-0,unit.000000,launch script constructed,
+24.9321,ExecWorker-0,unit.000000,spawning pass to popen,
+24.9342,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Allocating)
+24.9344,UpdateWorker-0,,debug,UpdateWorker drops with 1
+24.9348,UpdateWorker-0,unit.000000,unit update bulked (Allocating),
+24.9427,ExecWorker-0,unit.000000,spawning passed to popen,
+24.9428,ExecWorker-0,unit.000000,put,ExecWorker to update_queue (Executing)
+24.9429,ExecWorker-0,,debug,update_queue drops with 1
+24.9430,ExecWorker-0,,debug,watch_queue drops with 1
+24.9430,ExecWorker-0,unit.000000,put,ExecWorker to watcher (Executing)
+25.0352,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Executing)
+25.0352,UpdateWorker-0,,debug,UpdateWorker drops with 1
+25.0353,UpdateWorker-0,unit.000000,unit update bulked (Executing),
+25.0394,ExecWatcher-0,unit.000000,get,ExecWatcher picked up unit
+25.0395,ExecWatcher-0,,debug,ExecWatcher drops with 1
+25.1400,ExecWatcher-0,unit.000000,execution complete,
+25.1407,ExecWatcher-0,unit.000000,put,ExecWatcher to update_queue (Failed)
+25.1408,ExecWatcher-0,,debug,update_queue drops with 1
+25.1408,ExecWatcher-0,unit.000000,final,execution failed
+25.1410,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (unschedule)
+25.1410,CONTINUOUS,unit.000000,schedule,unit deallocation
+25.1411,CONTINUOUS,,unschedule,
+25.1415,CONTINUOUS,,put_cmd,Scheduler to schedule_queue (reschedule)
+25.1419,CONTINUOUS,,unschedule done - reschedule,
+25.1419,CONTINUOUS,,stop,
+25.1419,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (reschedule)
+25.1419,CONTINUOUS,,reschedule,
+25.1425,CONTINUOUS,,reschedule done,
+25.1426,CONTINUOUS,,stop,
+25.2358,UpdateWorker-0,unit.000000,get,update_queue to UpdateWorker (Failed)
+25.2359,UpdateWorker-0,,debug,UpdateWorker drops with 1
+25.2360,UpdateWorker-0,unit.000000,unit update bulked (Failed),
+25.5349,UpdateWorker-0,,unit update bulk pushed (3),
+25.5349,UpdateWorker-0,unit.000000,unit update pushed (Allocating),
+25.5349,UpdateWorker-0,unit.000000,unit update pushed (Executing),
+25.5350,UpdateWorker-0,unit.000000,unit update pushed (Failed),
+32.7390,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+42.8471,HeartbeatMonitor,,heartbeat,Listen! Listen! Listen to the heartbeat!
+42.9451,HeartbeatMonitor,,ingest_cmd,mongodb to HeartbeatMonitor (Cancel_Pilot:None)
+42.9451,HeartbeatMonitor,,stop request,
+42.9451,HeartbeatMonitor,,stop request,
+43.2280,MainThread,,stop request,
+43.2281,MainThread,,stop request,
+43.2281,MainThread,,stop request,
+43.2282,MainThread,,stop request,
+43.2282,MainThread,,stop request,
+43.2282,MainThread,,stop request,
+43.2283,MainThread,,stop request,
+43.2286,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+43.2286,CONTINUOUS,,get_cmd,schedule_queue to Scheduler (wakeup)
+43.2287,CONTINUOUS,,stop,
+43.2287,ExecWorker-0,,get_cmd,execution_queue to ExecWorker (wakeup)
+43.2288,ExecWorker-0,,stop,
+43.2290,StageoutWorker-0,,get_cmd,stageout_queue to StageoutWorker (wakeup)
+43.2292,StageoutWorker-0,,stop,
+43.2294,StageinWorker-0,,get_cmd,stagein_queue to StageinWorker (wakeup)
+43.2295,StageinWorker-0,,stop,
+43.2921,ExecWatcher-0,,stop,
+43.2924,UpdateWorker-0,,stop,
+43.3930,MainThread,,stop,
+43.3933,MainThread,,stop,finally clause
+43.0000,Bootstrapper,pilot.0000,cleanup start,
+43.0000,Bootstrapper,pilot.0000,cleanup done,
