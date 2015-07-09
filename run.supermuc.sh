@@ -16,8 +16,9 @@ RESOURCE='supermuc'
 CU_LOAD='sleep_%s.json'
 
 # experiment sizes
+# SIZES="128: 512: 1024:"
 # SIZES="128:development 512:development 1024:normal"
-SIZES="128: 512: 1024:"
+SIZES="128:test 512:test 1024:general"
 
 # number of workers
 WORKERS="1 4 8"
@@ -26,7 +27,7 @@ WORKERS="1 4 8"
 RUNTIME=30
 
 mkdir -p "data.$RESOURCE/"
-mkdir -p 'log.$RESOURCE/'
+mkdir -p "log.$RESOURCE/"
 
 # create 10^[246] byte sized dummy files for staging
 for d in 1 1K 1M
@@ -69,7 +70,7 @@ do
                     load=`printf "$CU_LOAD" $d`
 
                     tag="$RESOURCE : $c : $s : $d : $w : $i :"
-                    grep "$tag" experiment.$RESOURCE.sids >/dev/null
+                    grep "$tag" experiment.sids.$RESOURCE >/dev/null
 
                     if test $? = 0
                     then
@@ -95,7 +96,7 @@ do
                         sid=`grep 'session id:' $log | tail -n 1 | cut -f 2 -d :`
                         sid=`echo $sid` # trim white spaces
         
-                        echo "$tag $sid" | tee -a experiment.$RESOURCE.sids
+                        echo "$tag $sid" | tee -a experiment.sids.$RESOURCE
         
                         radicalpilot-stats -m prof -s "$sid" -p "data.$RESOURCE/"
                         radicalpilot-close-session -m export -s "$sid" 
