@@ -120,7 +120,7 @@ def wait_queue_size_cb(umgr, wait_queue_size):
 
 #------------------------------------------------------------------------------
 #
-def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config, 
+def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg, 
         scheduler, queue=None):
 
     # Create a new session. No need to try/except this: if session creation
@@ -153,7 +153,7 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_config,
             pdesc.runtime       = runtime
             pdesc.cleanup       = False
             pdesc.access_schema = RESOURCES[resource]['schema']
-            pdesc._config       = agent_config
+            pdesc._config       = agent_cfg
 
             pilot = pmgr.submit_pilots(pdesc)
 
@@ -231,7 +231,7 @@ if __name__ == "__main__":
     parser.add_option('-u', '--units',     dest='units')
     parser.add_option('-t', '--time',      dest='runtime')
     parser.add_option('-l', '--load',      dest='load')
-    parser.add_option('-a', '--agent',     dest='agent')
+    parser.add_option('-a', '--agent_cfg', dest='agent_cfg')
     parser.add_option('-r', '--resources', dest='resources')
     parser.add_option('-s', '--scheduler', dest='scheduler')
     parser.add_option('-q', '--queue',     dest='queue')
@@ -243,7 +243,7 @@ if __name__ == "__main__":
     resources = options.resources
     runtime   = options.runtime
     load      = options.load
-    agent     = options.agent
+    agent_cfg = options.agent_cfg
     scheduler = options.scheduler
     queue     = options.queue
 
@@ -257,7 +257,7 @@ if __name__ == "__main__":
     if not runtime  : raise ValueError ("need pilot runtime")
     if not resources: raise ValueError ("need target resource")
     if not load     : raise ValueError ("need load config")
-    if not agent    : raise ValueError ("need agent config")
+    if not agent_cfg: raise ValueError ("need agent config")
 
     if not queue    : queue = None
     
@@ -267,15 +267,14 @@ if __name__ == "__main__":
         if not resource in RESOURCES:
             raise ValueError ("unknown resource %s" % resource)
 
-    cu_load      = ru.read_json (load)
-    agent_config = ru.read_json (agent)
+    cu_load = ru.read_json (load)
 
     n_cores = int(n_cores)
     n_units = int(n_units)
     runtime = int(runtime)
 
     sid = run_experiment (n_cores, n_units, resources, runtime, cu_load,
-            agent_config, scheduler, queue)
+            agent_cfg, scheduler, queue)
 
     print "session id: %s" % sid
 

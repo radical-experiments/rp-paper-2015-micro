@@ -27,9 +27,9 @@ RESOURCE='stampede'
 CU_LOAD='sleep_%s.json'
 
 # experiment sizes
-# SIZES="128: 512: 1024:"
-# SIZES="128:development 512:development 1024:normal"
-SIZES="512:development"
+# SIZES="128: 256: 512: 1024:"
+# SIZES="128:development 256:development 512:normal 1024:normal"
+SIZES="256:development"
 
 # number of components per sub agent
 WORKERS="2 4 8 1"
@@ -146,7 +146,7 @@ do
                             sleep 1
             
                             python experiment.py       \
-                                -a "$cfg"              \
+                                -a "`pwd`/$cfg"        \
                                 -c "$s"                \
                                 -u "1"                 \
                                 -t "$RUNTIME"          \
