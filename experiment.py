@@ -23,7 +23,7 @@ RESOURCES = {'local' : {
                  },
              
              'archer' : {
-                 'resource' : 'epsrc.archer',
+                 'resource' : 'epsrc.archer_orte',
                  'project'  : 'e290',
                  'queue'    : 'short',
                  'schema'   : None,
@@ -149,11 +149,14 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
             pdesc.resource      = RESOURCES[resource]['resource']
             pdesc.cores         = n_cores
             pdesc.project       = RESOURCES[resource]['project']
-            pdesc.queue         = queue
             pdesc.runtime       = runtime
             pdesc.cleanup       = False
             pdesc.access_schema = RESOURCES[resource]['schema']
             pdesc._config       = agent_cfg
+
+            if queue:
+                print 'queue: %s'%queue
+                pdesc.queue     = queue
 
             pilot = pmgr.submit_pilots(pdesc)
 
