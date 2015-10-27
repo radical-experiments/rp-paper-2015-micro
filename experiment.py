@@ -202,7 +202,8 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
 
     except Exception as e:
         # Something unexpected happened in the pilot code above
-        print "caught Exception: %s" % e
+        import logging
+        logging.exception("caught Exception")
         raise
 
     except (KeyboardInterrupt, SystemExit) as e:

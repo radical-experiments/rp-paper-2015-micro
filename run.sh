@@ -21,8 +21,8 @@ COMPONENTS='exe'
 REPS=1
 
 # target resource : cores per node
-# RESOURCES='local'
-RESOURCES='stampede:16'
+RESOURCES='local'
+# RESOURCES='stampede:16'
 
 # compute unit load
 # CU_LOAD='sleep_%s.json'
@@ -32,20 +32,21 @@ CU_LOAD='cu_true.json'
 # nodes were added)
 # SIZES='128: 256: 512: 1024:'
 SIZES='100:development 250:normal 500:normal 1000:normal'
-# SIZES='256:'
+SIZES='256: 512: 1024: 2048:'
+SIZES='1024:'
 
 # number of components per sub agent
-WORKERS='2 4 8 1'
+WORKERS='1 2 4 8'
 # WORKERS='2'
 
 # number of sub agents to use
-AGENTS='2 4 8 1'
-# AGENTS='2'
+# AGENTS='2 4 8 1'
+AGENTS='1'
 
 # agent layout to use
 # simple_n describes a layout where n sub-agents all have a full set of
 # $WORKER agent components -- AgentWorker and AgentSchedulingComponent remain
-# singletons in agent.0 though
+# singletons in agent_0 though
 AGENT_CFG_TMPL='agent_simple.tmpl'
 
 # fixed parameters
@@ -60,7 +61,7 @@ mkdir -p 'log/'
 tmp='./tmp.dat'
 
 # we always run exactly one CU, but clone 'n' in the component of interest
-n=4000
+n=10000
 
 for res in $RESOURCES
 do
@@ -70,10 +71,10 @@ do
     for a in $AGENTS
     do
         a_idx=2
-        sub_agents='"agent.1"'
+        sub_agents='"agent_1"'
         while test "$a_idx" -le "$a"
         do
-            sub_agents="$sub_agents, \"agent.$a_idx\""
+            sub_agents="$sub_agents, \"agent_$a_idx\""
             a_idx=$((a_idx+1))
         done
 
@@ -93,7 +94,7 @@ do
                     do
                         # for each experiment, we create a new config with the requested
                         # number of sub agents
-                        cfg="agent.$c.$s.$d.$a.$w.$r.cfg"
+                        cfg="agent_$c.$s.$d.$a.$w.$r.cfg"
     
                         cat "$AGENT_CFG_TMPL" \
                             | sed -e "s/###sub_agents###/$sub_agents/g" \

@@ -2,6 +2,8 @@
 
 import os
 import sys
+import pprint
+import radical.pilot       as rp
 import radical.pilot.utils as rpu
 
 if len(sys.argv) > 1:
@@ -24,79 +26,40 @@ idx=0
 with open(exp_index, 'r') as f:
     for line in f.readlines():
         idx+=1
-      # if idx > 10: 
+      # if idx > 10:
       #     break
-        r, c, s, d, w, i, sid = line.replace(' ', '').replace('\n', '').split(':')
-        print r, c, s, d, w, i, sid
+      # c: component
+      # s: size of pilot
+      # d: data size
+      # a: number of agents
+      # w: number of workers
+      # r: resource
+      # i: index of reptition
+      # "$c : $s : $d : $a : $w : $r : $i : $sid"
+        c, s, d, a, w, r, i, sid = line.replace(' ', '').replace('\n', '').split(':')
         if c not in experiments:
             experiments[c] = list()
-        experiments[c].append([sid, "%s %s %s %s %s %s" % (r, c, s, d, w, i)])
+        experiments[c].append([sid, "%s %s %s %s %s %s %s" % (c, s, d, a, w, r, i)])
 
-import pprint
+print
 pprint.pprint(experiments)
 
 exp_frames = rpu.get_experiment_frames(experiments, exp_data)
+# pprint.pprint(exp_frames)
 
-event_filter = {'agent'           : {'in' : [{'event'   : 'get',
-                                              'message' : 'MongoDB to Agent (PendingExecution)'}, 
-                                             {'event'   : 'add clone',
-                                              'message' : 'Agent'}],
-                                     'out': [{'event'   : 'put',
-                                              'message' : 'Agent to schedule_queue (Allocating)'},
-                                             {'event'   : 'drop clone',
-                                              'message' : 'schedule_queue'}]
-                                    },
-                 'staging_input'  : {'in' : [{'event'   : 'get',
-                                              'message' : 'stagein_queue to StageinWorker (StagingInput)'}],
-                                     'out': [{'event'   : 'put',
-                                              'message' : 'StageinWorker to update_queue'}]
-                                    },
-                 'scheduling'     : {'in' : [{'event'   : 'get',
-                                              'message' : 'schedule_queue to Scheduler (Allocating)'}], 
-                                     'out': [{'event'   : 'schedule',
-                                              'message' : 'allocated'}]
-                                    },
-                 'execution'      : {'in' : [{'event'   : 'get',
-                                              'message' : 'executing_queue to ExecutionWorker (Executing)'}, 
-                                             {'event'   : 'get',
-                                              'message' : 'ExecWatcher picked up unit'}],
-                                     'out': [{'event'   : 'put',
-                                              'message' : 'ExecWorker to watcher (Executing)'},
-                                             {'event'   : 'put',
-                                              'message' : 'ExecWatcher to update_queue (StagingOutput)'}]
-                                    },
-                 'staging_output' : {'in' : [{'event'   : 'get',
-                                              'message' : 'stageout_queue to StageoutWorker (StagingOutput)'}],
-                                     'out': [{'event'   : 'put',
-                                              'message' : 'StageoutWorker to update_queue'}]
-                                    },
-                 'update'         : {'in' : [{'event'   : 'get',
-                                              'message' : 'update_queue to UpdateWorker (StagingInput)'}, 
-                                             {'event'   : 'get',
-                                              'message' : 'update_queue to UpdateWorker (Allocating)'}, 
-                                             {'event'   : 'get',
-                                              'message' : 'update_queue to UpdateWorker (Executing)'},
-                                             {'event'   : 'get',
-                                              'message' : 'update_queue to UpdateWorker (StagingOutput)'},
-                                             {'event'   : 'get',
-                                              'message' : 'update_queue to UpdateWorker'}],
-                                     'out': [{'event'   : 'unit update pushed (None)'},
-                                             {'event'   : 'unit update pushed (StagingInput)'},
-                                             {'event'   : 'unit update pushed (Allocating)'},
-                                             {'event'   : 'unit update pushed (Executing)'},
-                                             {'event'   : 'unit update pushed (StagingOutput)'},
-                                             {'event'   : 'unit update pushed'}]
-                                     }
+event_filter = {'inp' : {'in' : [{'state' : rp.AGENT_STAGING_INPUT          }],
+                         'out': [{'state' : rp.AGENT_SCHEDULING             }]
+                        },
+                'sch' : {'in' : [{'state' : rp.AGENT_SCHEDULING             }],
+                         'out': [{'state' : rp.AGENT_EXECUTING_PENDING      }]
+                        },
+                'exe' : {'in' : [{'state' : rp.EXECUTING                    }],
+                         'out': [{'state' : rp.AGENT_STAGING_OUTPUT_PENDING }]
+                        },
+                'out' : {'in' : [{'state' : rp.AGENT_STAGING_OUTPUT         }],
+                         'out': [{'state' : rp.PENDING_OUTPUT_STAGING       }]
+                        }
                }
-
-calib_filter = {'agent'           : event_filter['agent'         ]['in'],
-                'staging_input'   : event_filter['staging_input' ]['in'],
-                'scheduling'      : event_filter['scheduling'    ]['in'],
-                'execution'       : event_filter['execution'     ]['in'],
-                'staging_output'  : event_filter['staging_output']['in'],
-                'update'          : event_filter['update'        ]['in']
-               }
-
 
 
 for exp in sorted(exp_frames.keys()):
@@ -104,28 +67,36 @@ for exp in sorted(exp_frames.keys()):
 
     # these are the franes we want to plot for this experiment
     plot_frames = list()
-    
+
     for frame, label in exp_frames[exp]:
         # we add a data frame column for CU concurrency for the component of
         # interest.  Also, we calibrate t0 to when the first unit enters that
         # component.
-        rpu.add_concurrency (frame, tgt='cu_num', spec=event_filter[exp])
-        rpu.calibrate_frame (frame, spec=calib_filter[exp])
-      # plot_frames.append([frame, label])
-        plot_frames.append([frame, None])
-        
+        rpu.add_frequency   (frame, tgt='cu_freq',  spec=event_filter[exp]['in'])
+        rpu.add_event_count (frame, tgt='cu_count', spec=event_filter[exp]['in'])
+        rpu.add_concurrency (frame, tgt='cu_conc',  spec=event_filter[exp])
+        rpu.calibrate_frame (frame,                 spec=event_filter[exp]['in'])
+        plot_frames.append([frame, label])
+      # plot_frames.append([frame, None])
+
     # create the plots for CU concurrency over time, and also show the plots in the notebook
-    fig, _ = rpu.frame_plot(plot_frames, logx=False, logy=False, 
-                            title=exp, legend=False, figdir=figdir,
-                            axis=[['time',   'time (s)'], 
-                                  ['cu_num', "number of concurrent CUs in '%s'" % exp]])
+    fig, _ = rpu.frame_plot(plot_frames, logx=False, logy=False,
+                            title="%s_freq" % exp, legend=True, figdir=figdir,
+                            axis=[['time',    'time (s)'],
+                                  ['cu_freq', "frequency CUs in '%s'" % exp]])
+
+    # create the plots for CU concurrency over time, and also show the plots in the notebook
+    fig, _ = rpu.frame_plot(plot_frames, logx=False, logy=False,
+                            title="%s_count" % exp, legend=True, figdir=figdir,
+                            axis=[['time',    'time (s)'],
+                                  ['cu_count', "count of CUs in '%s'" % exp]])
   # fig.show()
-  # 
-  # # inverse axis, use logar. scale for time
-  # fig, _ = rpu.frame_plot(plot_frames, logx=False, logy=True, title=exp,
-  #                         title=exp, legend=False, figdir=figdir,
-  #                         axis=[['cu_num', 'number of concurrent CUs'],
-  #                               ['time',   'time (s)']])
+
+    # inverse axis, use logar. scale for time
+    fig, _ = rpu.frame_plot(plot_frames, logx=False, logy=False,
+                            title="%s_conc" % exp, legend=True, figdir=figdir,
+                            axis=[['time',   'time (s)'],
+                                  ['cu_conc', 'number of concurrent CUs']])
   # fig.show()
 
 
