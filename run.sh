@@ -27,8 +27,8 @@ CU_LOAD='cu_true.json'
 # SIZES='128: 256: 512: 1024:'
 SIZES='256: 512: 1024: 2048:'
 SIZES='1024:'
-SIZES='100:development 250:normal 500:normal 1000:normal'
-SIZES='100:development 250:normal'
+SIZES='250:normal 500:normal 1000:normal'
+SIZES='250:normal 1000:normal'
 
 # number of components per sub agent
 WORKERS='1 2 4 8'
@@ -198,6 +198,7 @@ do
                                 mv "$log"      "data/$sid/"
                                 cp "$cfg"      "data/$sid/"
                                 ls -l          "data/$sid/"
+                                rm -f "$sid.prof"
                             fi
                         done
                     done

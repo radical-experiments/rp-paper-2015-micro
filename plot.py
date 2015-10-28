@@ -49,7 +49,7 @@ exp_frames = rpu.get_experiment_frames(experiments, exp_data)
 
 event_filter = {'inp' : {'in' : [{'state' : rp.AGENT_STAGING_INPUT,
                                   'event' : 'advance'                       }],
-                         'out': [{'state' : rp.AGENT_SCHEDULING,
+                         'out': [{'state' : rp.AGENT_SCHEDULING_PENDING,
                                   'event' : 'advance'                       }],
                         },
                 'sch' : {'in' : [{'state' : rp.AGENT_SCHEDULING,
@@ -64,7 +64,7 @@ event_filter = {'inp' : {'in' : [{'state' : rp.AGENT_STAGING_INPUT,
                         },
                 'out' : {'in' : [{'state' : rp.AGENT_STAGING_OUTPUT,
                                   'event' : 'advance'                       }],
-                         'out': [{'state' : rp.PENDING_OUTPUT_STAGING ,
+                         'out': [{'state' : rp.UMGR_STAGING_OUTPUT_PENDING,
                                   'event' : 'advance'                       }],
                         }
                }
