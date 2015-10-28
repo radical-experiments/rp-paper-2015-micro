@@ -79,44 +79,6 @@ RESOURCES = {'local' : {
                  }
              }
 
-#------------------------------------------------------------------------------
-#
-def pilot_state_cb (pilot, state):
-
-    if not pilot:
-        return
-
-    print "[Callback]: ComputePilot '%s' state: %s." % (pilot.uid, state)
-
-    if state == rp.FAILED:
-        sys.exit (1)
-
-
-#------------------------------------------------------------------------------
-#
-def unit_state_cb (unit, state):
-
-    if not unit:
-        return
-
-
-    print "[Callback]: unit %s on %s: %s." % (unit.uid, unit.pilot_id, state)
-
-    if state in [rp.FAILED, rp.DONE, rp.CANCELED]:
-        print "[Callback]: %s" % state
-
-
-    if state == rp.FAILED:
-        print "stderr: %s" % unit.stderr
-      # sys.exit(2)
-
-
-#------------------------------------------------------------------------------
-#
-def wait_queue_size_cb(umgr, wait_queue_size):
-
-    print "[Callback]: wait_queue_size: %s." % wait_queue_size
-
 
 #------------------------------------------------------------------------------
 #
@@ -127,7 +89,6 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
     # fails, there is not much we can do anyways...
     session = rp.Session()
     sid     = session.uid
-    print "session id: %s" % sid
 
     # all other pilot code is now tried/excepted.  If an exception is caught, we
     # can rely on the session object to exist and be valid, and we can thus tear
@@ -135,9 +96,7 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
     # clause...
     try:
 
-        pmgr = rp.PilotManager(session=session)
-        pmgr.register_callback(pilot_state_cb)
-
+        pmgr   = rp.PilotManager(session=session)
         pilots = list()
 
         for resource in resources:
@@ -152,9 +111,10 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
             pdesc.runtime       = runtime
             pdesc.cleanup       = False
             pdesc.access_schema = RESOURCES[resource]['schema']
+            pdesc.exit_on_error = True
             pdesc._config       = agent_cfg
 
-            if queue:
+            if queue and resource != 'local':
                 print 'queue: %s'%queue
                 pdesc.queue     = queue
 
@@ -170,8 +130,6 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
 
 
         umgr = rp.UnitManager(session=session, scheduler=scheduler)
-        umgr.register_callback(unit_state_cb,      rp.UNIT_STATE)
-        umgr.register_callback(wait_queue_size_cb, rp.WAIT_QUEUE_SIZE)
         umgr.add_pilots(pilots)
 
         input_sd_umgr   = {'source':'/etc/group',    'target': 'f2',                'action': rp.TRANSFER}
@@ -193,10 +151,6 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
 
         umgr.wait_units()
 
-        for cu in units:
-            print "* Task %s state %s, exit code: %s, started: %s, finished: %s" \
-                % (cu.uid, cu.state, cu.exit_code, cu.start_time, cu.stop_time)
-
       # os.system ("radicalpilot-stats -m stat,plot -s %s > %s.stat" % (session.uid, session_name))
 
 
@@ -211,12 +165,11 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
         # corresponding KeyboardInterrupt exception for shutdown.  We also catch
         # SystemExit (which gets raised if the main threads exits for some other
         # reason).
-        print "need to exit now: %s" % e
+        pass
 
     finally:
         # always clean up the session, no matter if we caught an exception or
         # not.
-        print "closing session"
         time.sleep (10) # give time to finish clones...
         session.close (cleanup=False) # keep the DB entries...
 
@@ -280,5 +233,6 @@ if __name__ == "__main__":
     sid = run_experiment (n_cores, n_units, resources, runtime, cu_load,
             agent_cfg, scheduler, queue)
 
-    print "session id: %s" % sid
+    with open('last.sid', 'w') as f:
+        f.write("%s\n" % sid)
 

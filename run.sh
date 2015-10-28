@@ -1,28 +1,22 @@
 #!/bin/sh
 
-export RADICAL_PILOT_PROFILE=True
-export RADICAL_DEBUG=TRUE
-export RADICAL_VERBOSE=DEBUG
-export RADICAL_UTILS_VERBOSE=DEBUG
-export RADICAL_SAGA_VERBOSE=DEBUG
-export RADICAL_PILOT_VERBOSE=DEBUG
 
 # load the virtenv
 . ./ve/bin/activate
-python -c 'import radical.pilot as rp; print rp.version_detail'
+python -c 'import radical.pilot as rp' || exit
 
 # list of components we want to benchmark.  For each component, we will create
 # a config which configures the blowup mechanism to load just that component.
 # We will then run that config repeatedly (for stats) and collect the profles.
 COMPONENTS='inp sch exe out'
-COMPONENTS='exe'
+# COMPONENTS='exe'
 
 # number of repetitions
 REPS=1
 
 # target resource : cores per node
-RESOURCES='local'
-# RESOURCES='stampede:16'
+RESOURCES='stampede:16 local'
+# RESOURCES='local'
 
 # compute unit load
 # CU_LOAD='sleep_%s.json'
@@ -31,17 +25,19 @@ CU_LOAD='cu_true.json'
 # experiment sizes (make sure it fits into the queue limits after the agent
 # nodes were added)
 # SIZES='128: 256: 512: 1024:'
-SIZES='100:development 250:normal 500:normal 1000:normal'
 SIZES='256: 512: 1024: 2048:'
 SIZES='1024:'
+SIZES='100:development 250:normal 500:normal 1000:normal'
+SIZES='100:development 250:normal'
 
 # number of components per sub agent
 WORKERS='1 2 4 8'
-# WORKERS='2'
+WORKERS='1'
+WORKERS='1 8'
 
 # number of sub agents to use
-# AGENTS='2 4 8 1'
 AGENTS='1'
+AGENTS='2 4 8 1'
 
 # agent layout to use
 # simple_n describes a layout where n sub-agents all have a full set of
@@ -52,11 +48,11 @@ AGENT_CFG_TMPL='agent_simple.tmpl'
 # fixed parameters
 RUNTIME=30
 
+# staging file sizes
 FILES='0 1 1K 1M'
 FILES='0'
 
 mkdir -p 'data/'
-mkdir -p 'log/'
 
 tmp='./tmp.dat'
 
@@ -138,7 +134,7 @@ do
                         cat "$cfg" | sed -e "s/###.*_drop###/0/g" > "$tmp"
                         mv "$tmp" "$cfg"
         
-                        echo $cfg
+                      # echo $cfg
                       # cat  $cfg
         
                         # create 10^[246] byte sized dummy files for staging
@@ -152,7 +148,7 @@ do
                         do
                             i=$((i+1))
                             exp="${c}_${s}_${d}_${a}_${w}_${r}_${i}"
-                            log="log/$exp.log"
+                            log="$exp.log"
                             load=`printf "$CU_LOAD" $d`
         
                             tag="$c : $s : $d : $a : $w : $r : $i :"
@@ -163,12 +159,17 @@ do
                                 echo "tag exists - skipping experiment $tag"
         
                             else
-                                echo "running experiment $tag"
+                                echo "running experiment $tag ($cfg)"
         
+                                rm -f  last.sid
                                 rm -rf $HOME/.saga/adaptors/shell_job/
                                 killall -9 -q -u merzky python
                                 sleep 1
-                
+                                
+                                export RADICAL_PILOT_PROFILE=True
+                                export RADICAL_VERBOSE="DEBUG"
+                                export RADICAL_LOG_TGT="`pwd`/$log"
+
                                 python experiment.py       \
                                     -a "`pwd`/$cfg"        \
                                     -c "$s"                \
@@ -176,14 +177,19 @@ do
                                     -t "$RUNTIME"          \
                                     -r "$r"                \
                                     -l "$load"             \
-                                    -q "$q"                \
-                                    2>&1 | tee "$log" 
+                                    -q "$q"
                 
-                                sid=`grep 'session id:' $log | tail -n 1 | cut -f 2 -d :`
+                                sid=`cat last.sid`
                                 sid=`echo $sid` # trim white spaces
                 
-                                echo "$tag $sid" | tee -a experiment.sids
+                                echo "$tag $sid" >> experiment.sids
                                 mkdir -p "data/$sid/"
+
+                                if test -z "$sid"
+                                then
+                                    echo "could not get sid"
+                                    exit 1
+                                fi
                 
                               # radicalpilot-stats -m prof -s "$sid" -p "data/"
                                 radicalpilot-fetch-profiles -s "$sid" -t "data/"

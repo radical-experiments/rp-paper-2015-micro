@@ -47,17 +47,25 @@ pprint.pprint(experiments)
 exp_frames = rpu.get_experiment_frames(experiments, exp_data)
 # pprint.pprint(exp_frames)
 
-event_filter = {'inp' : {'in' : [{'state' : rp.AGENT_STAGING_INPUT          }],
-                         'out': [{'state' : rp.AGENT_SCHEDULING             }]
+event_filter = {'inp' : {'in' : [{'state' : rp.AGENT_STAGING_INPUT,
+                                  'event' : 'advance'                       }],
+                         'out': [{'state' : rp.AGENT_SCHEDULING,
+                                  'event' : 'advance'                       }],
                         },
-                'sch' : {'in' : [{'state' : rp.AGENT_SCHEDULING             }],
-                         'out': [{'state' : rp.AGENT_EXECUTING_PENDING      }]
+                'sch' : {'in' : [{'state' : rp.AGENT_SCHEDULING,
+                                  'event' : 'advance'                       }],
+                         'out': [{'state' : rp.AGENT_EXECUTING_PENDING,
+                                  'event' : 'advance'                       }],
                         },
-                'exe' : {'in' : [{'state' : rp.EXECUTING                    }],
-                         'out': [{'state' : rp.AGENT_STAGING_OUTPUT_PENDING }]
+                'exe' : {'in' : [{'state' : rp.EXECUTING,
+                                  'event' : 'advance'                       }],
+                         'out': [{'state' : rp.AGENT_STAGING_OUTPUT_PENDING,
+                                  'event' : 'advance'                       }],
                         },
-                'out' : {'in' : [{'state' : rp.AGENT_STAGING_OUTPUT         }],
-                         'out': [{'state' : rp.PENDING_OUTPUT_STAGING       }]
+                'out' : {'in' : [{'state' : rp.AGENT_STAGING_OUTPUT,
+                                  'event' : 'advance'                       }],
+                         'out': [{'state' : rp.PENDING_OUTPUT_STAGING ,
+                                  'event' : 'advance'                       }],
                         }
                }
 
@@ -69,6 +77,7 @@ for exp in sorted(exp_frames.keys()):
     plot_frames = list()
 
     for frame, label in exp_frames[exp]:
+
         # we add a data frame column for CU concurrency for the component of
         # interest.  Also, we calibrate t0 to when the first unit enters that
         # component.
