@@ -1,0 +1,530 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "agent_config": {
+                "agent_launch_method": "SSH", 
+                "agent_layout": {
+                    "agent_0": {
+                        "bridges": [
+                            "agent_staging_input_queue", 
+                            "agent_scheduling_queue", 
+                            "agent_executing_queue", 
+                            "agent_staging_output_queue", 
+                            "agent_unschedule_pubsub", 
+                            "agent_reschedule_pubsub", 
+                            "agent_command_pubsub", 
+                            "agent_state_pubsub"
+                        ], 
+                        "components": {
+                            "AgentSchedulingComponent": 1
+                        }, 
+                        "pull_units": true, 
+                        "sub_agents": [
+                            "agent_1"
+                        ], 
+                        "target": "local"
+                    }, 
+                    "agent_1": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_2": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_3": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_4": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_5": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_6": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_7": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_8": {
+                        "components": {
+                            "AgentExecutingComponent": 1, 
+                            "AgentStagingInputComponent": 4, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }
+                }, 
+                "bulk_collection_time": 1.0, 
+                "clone": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 10000
+                    }
+                }, 
+                "cores": 504, 
+                "cores_per_node": 24, 
+                "db_poll_sleeptime": 0.1, 
+                "debug": 10, 
+                "drop": {
+                    "AgentExecutingComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 0, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentWorker": {
+                        "input": 0, 
+                        "output": 0
+                    }
+                }, 
+                "heartbeat_interval": 10, 
+                "lrms": "SLURM", 
+                "max_io_loglength": 1024, 
+                "mongodb_url": "mongodb://54.221.194.147:24242/db_am", 
+                "mpi_launch_method": "MPIRUN_RSH", 
+                "pilot_id": "pilot.0000", 
+                "runtime": 10, 
+                "scheduler": "CONTINUOUS", 
+                "session_id": "rp.session.cameo.merzky.016745.0048", 
+                "spawner": "POPEN", 
+                "staging_area": "staging_area", 
+                "staging_scheme": "staging", 
+                "task_launch_method": "SSH"
+            }, 
+            "callbackhistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446806497.063181
+                }, 
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446806497.065679
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446806498.133732
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446806537.638557
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1446806552.343028
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446806617.091048
+                }
+            ], 
+            "commands": [], 
+            "cores_per_node": null, 
+            "description": {
+                "_config": "/home/merzky/saga/experiments/rp-paper-2015-micro/agent_inp.500.0.1.4.comet.cfg", 
+                "access_schema": null, 
+                "cleanup": false, 
+                "cores": 500, 
+                "exit_on_error": true, 
+                "memory": null, 
+                "project": "TG-MCB090174", 
+                "queue": "compute", 
+                "resource": "xsede.comet", 
+                "runtime": 10, 
+                "sandbox": null
+            }, 
+            "finished": 1446807171.51411, 
+            "global_sandbox": "/home/amerzky/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /home/merzky/saga/radical.pilot.micro/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1446806500.624358
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (<saga.filesystem.directory.Directory object at 0x325eb90>).", 
+                    "timestamp": 1446806500.62496
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/radical/utils/radical.utils-v0.37-1-gcf03063-feature-log-report-level.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/).", 
+                    "timestamp": 1446806504.948415
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/saga/saga-python-0.37.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/).", 
+                    "timestamp": 1446806509.841844
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.37.10-168-gc03f841-experiments-micro.tar.gz' to sandbox (sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/).", 
+                    "timestamp": 1446806519.956263
+                }, 
+                {
+                    "message": "Writing agent configuration to file '/tmp/rp_agent_cfg_UjZHwB.json'.", 
+                    "timestamp": 1446806528.357476
+                }, 
+                {
+                    "message": "Copying agent configuration file 'file://localhost/tmp/rp_agent_cfg_UjZHwB.json' to sandbox (sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/).", 
+                    "timestamp": 1446806528.358365
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'TG-MCB090174', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/', 'Queue': 'compute', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 10, 'Arguments': ['-l bootstrap_1.sh', \" -d 'radical.utils-v0.37-1-gcf03063-feature-log-report-level.tar.gz:saga-python-0.37.tar.gz:radical.pilot-v0.37.10-168-gc03f841-experiments-micro.tar.gz' -m 'create' -p 'pilot.0000' -r 'local' -s 'rp.session.cameo.merzky.016745.0048' -v '/home/amerzky/radical.pilot.sandbox/ve_comet' -a 'multicore' -e 'module load python' -w 'export PATH=$PATH' -w 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH'\"], 'ProcessesPerHost': 24, 'Error': 'bootstrap_1.err', 'Output': 'bootstrap_1.out', 'TotalCPUCount': 504}", 
+                    "timestamp": 1446806532.981159
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [slurm+ssh://comet.sdsc.xsede.org/]-[1240721]", 
+                    "timestamp": 1446806536.934999
+                }, 
+                {
+                    "message": "FAILED startup", 
+                    "timestamp": 1446807171.51411
+                }, 
+                {
+                    "message": "real 1446807171.536447 sec | user 29.710 sec | system 0.963 sec | mem 186760.00 kB", 
+                    "timestamp": 1446807171.51411
+                }
+            ], 
+            "logfile": null, 
+            "nodes": null, 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "pmgr.0000", 
+            "saga_job_id": "[slurm+ssh://comet.sdsc.xsede.org/]-[1240721]", 
+            "sagajobid": null, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/", 
+            "started": 1446807106.415994, 
+            "state": "Failed", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446806496.810365
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446806497.854014
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446806536.934999
+                }, 
+                {
+                    "state": "Active", 
+                    "timestamp": 1446807106.415994
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446807171.51411
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1446806496.810365, 
+            "unit_ids": [
+                "unit.000000"
+            ], 
+            "unitmanager": "umgr.0000"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "pmgr.0000", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.cameo.merzky.016745.0048", 
+        "connected": 1446806493.898239, 
+        "created": 1446806493.898239, 
+        "name": "rp.session.cameo.merzky.016745.0048"
+    }, 
+    "umgr": [
+        {
+            "_id": "umgr.0000", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "round_robin"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [
+                {
+                    "action": "Link", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "staging:///f1", 
+                    "state": "Pending", 
+                    "target": "f1"
+                }
+            ], 
+            "Agent_Input_Status": "Pending", 
+            "Agent_Output_Directives": [
+                {
+                    "action": "Copy", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f1", 
+                    "state": "Pending", 
+                    "target": "staging:///f1.bak"
+                }
+            ], 
+            "Agent_Output_Status": "New", 
+            "FTW_Input_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "/etc/group", 
+                    "state": "Pending", 
+                    "target": "f2"
+                }
+            ], 
+            "FTW_Input_Status": "Pending", 
+            "FTW_Output_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f2", 
+                    "state": "Pending", 
+                    "target": "f2.bak"
+                }
+            ], 
+            "FTW_Output_Status": "New", 
+            "_id": "unit.000000", 
+            "callbackhistory": [
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446806505.71015
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446806510.558341
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446806599.222323
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446806601.666617
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/true", 
+                "input_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "/etc/group", 
+                        "target": "f2"
+                    }, 
+                    {
+                        "action": "Link", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "staging:///f1", 
+                        "target": "f1"
+                    }
+                ], 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f2", 
+                        "target": "f2.bak"
+                    }, 
+                    {
+                        "action": "Copy", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f1", 
+                        "target": "staging:///f1.bak"
+                    }
+                ], 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": 0, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446806504.541491
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446806510.263946
+                }, 
+                {
+                    "message": "Output transfer completed.", 
+                    "timestamp": 1446806601.179043
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "sftp://comet.sdsc.xsede.org/home/amerzky/radical.pilot.sandbox/rp.session.cameo.merzky.016745.0048-pilot.0000//unit.000000", 
+            "started": null, 
+            "state": "Done", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446806503.598387
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446806505.403411
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446806505.403411
+                }, 
+                {
+                    "state": "AgentStagingInput", 
+                    "timestamp": 1446807153.039169
+                }, 
+                {
+                    "state": "AllocatingPending", 
+                    "timestamp": 1446807153.04159
+                }, 
+                {
+                    "state": "Allocating", 
+                    "timestamp": 1446807153.044023
+                }, 
+                {
+                    "state": "ExecutingPending", 
+                    "timestamp": 1446807153.046497
+                }, 
+                {
+                    "state": "Executing", 
+                    "timestamp": 1446807153.048981
+                }, 
+                {
+                    "state": "AgentStagingOutputPending", 
+                    "timestamp": 1446807153.0515
+                }, 
+                {
+                    "state": "AgentStagingOutput", 
+                    "timestamp": 1446807153.054002
+                }, 
+                {
+                    "state": "PendingOutputStaging", 
+                    "timestamp": 1446807153.056504
+                }, 
+                {
+                    "state": "StagingOutput", 
+                    "timestamp": 1446806598.352079
+                }, 
+                {
+                    "state": "Done", 
+                    "timestamp": 1446806601.179043
+                }
+            ], 
+            "stderr": "Warning: untrusted X11 forwarding setup failed: xauth key data not generated\r\nWarning: No xauth data; using fake authentication data for X11 forwarding.\r\n", 
+            "stdout": "", 
+            "submitted": 1446806503.598387, 
+            "unitmanager": "umgr.0000"
+        }
+    ]
+}
