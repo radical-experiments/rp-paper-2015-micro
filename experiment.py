@@ -38,8 +38,24 @@ RESOURCES = {'local' : {
              
              'stampede' : {
                  'resource' : 'xsede.stampede',
-                 'project'  : 'TG-MCB090174' ,
+                 'project'  : 'TG-MCB150124',
+               # 'project'  : 'TG-MCB090174',
                  'queue'    : 'normal',
+                 'schema'   : None,
+                 },
+             
+             'bw' : {
+                 'resource' : 'ncsa.bw',
+                 'project'  : 'gkd' ,
+                 'queue'    : 'normal',
+                 'schema'   : 'gsissh',
+                 },
+             
+             'comet' : {
+                 'resource' : 'xsede.comet',
+                 'project'  : 'TG-MCB090174',
+               # 'project'  : 'TG-MCB150124', 
+                 'queue'    : 'compute',
                  'schema'   : None,
                  },
              

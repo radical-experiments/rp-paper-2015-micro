@@ -5,58 +5,23 @@
 . ./ve/bin/activate
 python -c 'import radical.pilot as rp' || exit
 
-# list of components we want to benchmark.  For each component, we will create
-# a config which configures the blowup mechanism to load just that component.
-# We will then run that config repeatedly (for stats) and collect the profles.
-COMPONENTS='inp sch exe out'
-# COMPONENTS='exe'
+if ! test -f "$1"
+then
+    echo "no such config to source: $1"
+    exit 1
+fi
 
-# number of repetitions
-REPS=1
+. "./$1"
 
-# target resource : cores per node
-RESOURCES='stampede:16 local'
-# RESOURCES='local'
-
-# compute unit load
-# CU_LOAD='sleep_%s.json'
-CU_LOAD='cu_true.json'
-
-# experiment sizes (make sure it fits into the queue limits after the agent
-# nodes were added)
-# SIZES='128: 256: 512: 1024:'
-SIZES='256: 512: 1024: 2048:'
-SIZES='1024:'
-SIZES='250:normal 500:normal 1000:normal'
-SIZES='250:normal 1000:normal'
-
-# number of components per sub agent
-WORKERS='1 2 4 8'
-WORKERS='1'
-WORKERS='1 8'
-
-# number of sub agents to use
-AGENTS='1'
-AGENTS='2 4 8 1'
-
-# agent layout to use
-# simple_n describes a layout where n sub-agents all have a full set of
-# $WORKER agent components -- AgentWorker and AgentSchedulingComponent remain
-# singletons in agent_0 though
-AGENT_CFG_TMPL='agent_simple.tmpl'
-
-# fixed parameters
-RUNTIME=30
-
-# staging file sizes
-FILES='0 1 1K 1M'
-FILES='0'
 
 mkdir -p 'data/'
 
 tmp='./tmp.dat'
 
-# we always run exactly one CU, but clone 'n' in the component of interest
+# we always run exactly one CU, but clone 'n' in the component of interest.
+# make sure the number is large enough to keep the components busy for some
+# seconds -- otherwise we don't get decent 'frequency' (which is defined per
+# full second)
 n=10000
 
 for res in $RESOURCES
@@ -88,6 +53,17 @@ do
                 do
                     for w in $WORKERS
                     do
+                        # we change a, w on the fly - remember actual values
+                        old_w=$w
+                        old_a=$a
+
+                        # for the scheduler, we can only use one instance
+                        if test "$c" = "sch"
+                        then
+                            w=1
+                            a=1
+                        fi
+
                         # for each experiment, we create a new config with the requested
                         # number of sub agents
                         cfg="agent_$c.$s.$d.$a.$w.$r.cfg"
@@ -95,44 +71,37 @@ do
                         cat "$AGENT_CFG_TMPL" \
                             | sed -e "s/###sub_agents###/$sub_agents/g" \
                             > "$cfg"
-        
+
+                        # configure the compent numbers in the sub agents
                         for C in $COMPONENTS
                         do
+
                             if test "$c" = "$C"
                             then
                                 # set this component number
-                                cat "$cfg" | sed -e "s/###${C}_worker###/$w/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_worker###/$w/g" -i "$cfg"
         
                                 # set this clone number to create clones
-                                cat "$cfg" | sed -e "s/###${C}_clone###/$n/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_clone###/$n/g" -i "$cfg"
         
                                 # set this drop number to drop clones
-                                cat "$cfg" | sed -e "s/###${C}_drop###/1/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_drop###/1/g" -i "$cfg"
                             else
                                 # set all *other* component numbers to 1
-                                cat "$cfg" | sed -e "s/###${C}_worker###/1/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_worker###/1/g" -i "$cfg"
         
                                 # set *other* clone number to create no clones
-                                cat "$cfg" | sed -e "s/###${C}_clone###/1/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_clone###/1/g" -i "$cfg"
         
                                 # set *other* drop number to drop nothing
-                                cat "$cfg" | sed -e "s/###${C}_drop###/0/g" > "$tmp"
-                                mv "$tmp" "$cfg"
+                                sed -e "s/###${C}_drop###/0/g" -i "$cfg"
                            fi
                         done
     
                         # do the remaining wildcards (if COMPONENTS is incomplete)
-                        cat "$cfg" | sed -e "s/###.*_worker###/1/g" > "$tmp"
-                        mv "$tmp" "$cfg"
-                        cat "$cfg" | sed -e "s/###.*_clone###/1/g" > "$tmp"
-                        mv "$tmp" "$cfg"
-                        cat "$cfg" | sed -e "s/###.*_drop###/0/g" > "$tmp"
-                        mv "$tmp" "$cfg"
+                        sed -e "s/###.*_worker###/1/g" -i "$cfg"
+                        sed -e "s/###.*_clone###/1/g"  -i "$cfg"
+                        sed -e "s/###.*_drop###/0/g"   -i "$cfg"
         
                       # echo $cfg
                       # cat  $cfg
@@ -151,20 +120,22 @@ do
                             log="$exp.log"
                             load=`printf "$CU_LOAD" $d`
         
-                            tag="$c : $s : $d : $a : $w : $r : $i :"
+                            tag=`printf '%s : %4d : %2d : %2d : %2d : %-10s : %2d :' \
+                                         $c    $s    $d    $a    $w      $r    $i`
+
                             grep "$tag" experiment.sids >/dev/null
-        
+
                             if test $? = 0
                             then
-                                echo "tag exists - skipping experiment $tag"
+                                echo "skipping experiment $tag (tag exists)"
         
                             else
-                                echo "running experiment $tag ($cfg)"
+                                echo "running  experiment $tag ($cfg)"
         
                                 rm -f  last.sid
                                 rm -rf $HOME/.saga/adaptors/shell_job/
-                                killall -9 -q -u merzky python
-                                sleep 1
+                              # killall -9 -q -u merzky python
+                              # sleep 1
                                 
                                 export RADICAL_PILOT_PROFILE=True
                                 export RADICAL_VERBOSE="DEBUG"
@@ -192,6 +163,7 @@ do
                                 fi
                 
                               # radicalpilot-stats -m prof -s "$sid" -p "data/"
+                           echo radicalpilot-fetch-profiles -s "$sid" -t "data/"
                                 radicalpilot-fetch-profiles -s "$sid" -t "data/"
                                 radicalpilot-close-session  -m export -s "$sid" 
                                 mv "$sid".json "data/$sid/"
@@ -201,6 +173,11 @@ do
                                 rm -f "$sid.prof"
                             fi
                         done
+
+                        # reset to actual values for a, w
+                        a=$old_a
+                        w=$old_w
+
                     done
     
                     rm -f "$cfg"
