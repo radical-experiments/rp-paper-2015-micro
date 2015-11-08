@@ -25,6 +25,7 @@ done
 
 export TIMEFORMAT="r:%lR  u:%lU  s:%lS"
 unset `env | grep VERBOSE | cut -f 1 -d =`
+rm plot_all.lst
 for sid in *.*.sids
 do
     old_len=0
@@ -35,12 +36,17 @@ do
 
     if test "$old_len" = "$new_len"
     then
-        echo "======= $old_len == $new_len : $sid"
+        printf "======= %2d == %2d : $sid\n" $new_len $old_len
         continue
     else
-        echo "======= $new_len != $old_len : $sid"
+        printf "======= %2d != %2d : $sid\n" $new_len $old_len
+        echo ./plot.py $sid >> plot_all.lst
         echo "$new_len" > $sid.len
     fi
 
-    time (./plot.py $sid >>plot.log 2>&1 || echo "############# ERROR ###############")
 done
+
+cat plot_all.lst
+echo "plotting `wc -l plot_all.lst` times"
+time parallel ./plot.py < plot_all.lst
+
