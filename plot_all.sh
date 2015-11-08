@@ -25,7 +25,8 @@ done
 
 export TIMEFORMAT="r:%lR  u:%lU  s:%lS"
 unset `env | grep VERBOSE | cut -f 1 -d =`
-rm plot_all.lst
+rm    plot_all.lst
+touch plot_all.lst
 for sid in *.*.sids
 do
     old_len=0
