@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 for c in inp sch exe out
 do
@@ -23,6 +23,8 @@ do
    done
 done
 
+export TIMEFORMAT="r:%lR  u:%lU  s:%lS"
+unset `env | grep VERBOSE | cut -f 1 -d =`
 for sid in *.*.sids
 do
     old_len=0
@@ -33,12 +35,12 @@ do
 
     if test "$old_len" = "$new_len"
     then
-        echo "$sid: $old_len = $new_len"
+        echo "======= $old_len == $new_len : $sid"
         continue
+    else
+        echo "======= $new_len != $old_len : $sid"
+        echo "$new_len" > $sid.len
     fi
 
-    wc -l $sid  | cut -f 1 -d ' ' > $sid.len
-    new_len=`cat "$sid.len"`
-    echo "======= $sid: $new_len"
-    (./plot.py $sid || echo "############# ERROR ###############")
+    time (./plot.py $sid >>plot.log 2>&1 || echo "############# ERROR ###############")
 done

@@ -4,8 +4,8 @@
 # We will then run that config repeatedly (for stats) and collect the profles.
 COMPONENTS='inp'
 COMPONENTS='out'
-COMPONENTS='inp sch exe out'
 COMPONENTS='exe'
+COMPONENTS='inp sch exe out'
 
 # number of repetitions
 REPS=1
