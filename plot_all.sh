@@ -8,7 +8,7 @@ do
         do
             for w in 1 2 4 8
             do
-               f="$c.$s.$a.$w.sids"
+               f="sids/$c.$s.$a.$w.sids"
                grep "$c :  $s :  0 :  $a :  $w : " experiment.sids > $f
                test -s $f || rm $f
            done
@@ -16,7 +16,7 @@ do
 
        for r in bw comet stampede
        do
-           f="$c.$s.$r.sids"
+           f="sids/$c.$s.$r.sids"
            grep "$c : $s : " experiment.sids | grep $r > $f
            test -s $f || rm $f
        done
@@ -27,7 +27,7 @@ export TIMEFORMAT="r:%lR  u:%lU  s:%lS"
 unset `env | grep VERBOSE | cut -f 1 -d =`
 rm    plot_all.lst
 touch plot_all.lst
-for sid in *.*.sids
+for sid in sids/*.sids
 do
     old_len=0
     new_len=`wc -l $sid | cut -f 1 -d ' '`

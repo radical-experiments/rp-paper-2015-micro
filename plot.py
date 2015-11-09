@@ -179,7 +179,7 @@ if __name__ == "__main__":
 
     tgt = '.'.join(exp_index.split('.')[:-1])
     
-    figdir = "%s/%s.plots" % (base, tgt)
+    figdir = "%s/plots/%s.plots" % (base, tgt)
     try:
         os.mkdir (figdir)
     except OSError:
