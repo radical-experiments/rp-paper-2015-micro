@@ -1,0 +1,494 @@
+{
+    "pilot": [
+        {
+            "_id": "pilot.0000", 
+            "agent_config": {
+                "agent_launch_method": "ORTE", 
+                "agent_layout": {
+                    "agent_0": {
+                        "bridges": [
+                            "agent_staging_input_queue", 
+                            "agent_scheduling_queue", 
+                            "agent_executing_queue", 
+                            "agent_staging_output_queue", 
+                            "agent_unschedule_pubsub", 
+                            "agent_reschedule_pubsub", 
+                            "agent_command_pubsub", 
+                            "agent_state_pubsub"
+                        ], 
+                        "components": {
+                            "AgentSchedulingComponent": 1
+                        }, 
+                        "pull_units": true, 
+                        "sub_agents": [
+                            "agent_1", 
+                            "agent_2", 
+                            "agent_3", 
+                            "agent_4", 
+                            "agent_5", 
+                            "agent_6", 
+                            "agent_7", 
+                            "agent_8"
+                        ], 
+                        "target": "local"
+                    }, 
+                    "agent_1": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_2": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_3": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_4": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_5": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_6": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_7": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }, 
+                    "agent_8": {
+                        "components": {
+                            "AgentExecutingComponent": 8, 
+                            "AgentStagingInputComponent": 1, 
+                            "AgentStagingOutputComponent": 1
+                        }, 
+                        "target": "node"
+                    }
+                }, 
+                "bulk_collection_time": 1.0, 
+                "clone": {
+                    "AgentExecutingComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 1, 
+                        "output": 10000
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 1, 
+                        "output": 1
+                    }, 
+                    "AgentWorker": {
+                        "input": 1, 
+                        "output": 1
+                    }
+                }, 
+                "cores": 250, 
+                "db_poll_sleeptime": 0.1, 
+                "debug": 10, 
+                "drop": {
+                    "AgentExecutingComponent": {
+                        "input": 0, 
+                        "output": 1
+                    }, 
+                    "AgentSchedulingComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentStagingInputComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentStagingOutputComponent": {
+                        "input": 0, 
+                        "output": 0
+                    }, 
+                    "AgentWorker": {
+                        "input": 0, 
+                        "output": 0
+                    }
+                }, 
+                "heartbeat_interval": 10, 
+                "lrms": "TORQUE", 
+                "max_io_loglength": 1024, 
+                "mongodb_url": "mongodb://54.221.194.147:24242/db_am", 
+                "mpi_launch_method": "ORTE", 
+                "pilot_id": "pilot.0000", 
+                "runtime": 10, 
+                "scheduler": "CONTINUOUS", 
+                "session_id": "rp.session.cameo.merzky.016747.0104", 
+                "spawner": "POPEN", 
+                "staging_area": "staging_area", 
+                "staging_scheme": "staging", 
+                "task_launch_method": "ORTE"
+            }, 
+            "callbackhistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446995984.016989
+                }, 
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446995984.019172
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446995984.704882
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446996100.672897
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446996241.191682
+                }
+            ], 
+            "commands": [
+                {
+                    "arg": null, 
+                    "time": 1446996251.887448, 
+                    "type": "Cancel_Pilot"
+                }
+            ], 
+            "cores_per_node": null, 
+            "description": {
+                "_config": "/home/merzky/saga/experiments/rp-paper-2015-micro/agent_exe.250.0.8.8.bw.cfg", 
+                "access_schema": "gsissh", 
+                "cleanup": false, 
+                "cores": 250, 
+                "exit_on_error": true, 
+                "memory": null, 
+                "project": "gkd", 
+                "queue": "debug", 
+                "resource": "ncsa.bw", 
+                "runtime": 10, 
+                "sandbox": null
+            }, 
+            "finished": 1446996240.672723, 
+            "global_sandbox": "/scratch/sciteam/merzky/radical.pilot.sandbox", 
+            "heartbeat": null, 
+            "input_transfer_finished": null, 
+            "input_transfer_started": null, 
+            "log": [
+                {
+                    "message": "Using bootstrapper /home/merzky/saga/radical.pilot.micro/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh", 
+                    "timestamp": 1446995999.166074
+                }, 
+                {
+                    "message": "Copying bootstrapper 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/default_bootstrapper.sh' to agent sandbox (<saga.filesystem.directory.Directory object at 0x25dda90>).", 
+                    "timestamp": 1446995999.166519
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/radical/utils/radical.utils-v0.37-1-gcf03063-feature-log-report-level.tar.gz' to sandbox (gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/).", 
+                    "timestamp": 1446996011.959599
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/saga/saga-python-0.37.tar.gz' to sandbox (gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/).", 
+                    "timestamp": 1446996018.092922
+                }, 
+                {
+                    "message": "Copying sdist 'file://localhost/home/merzky/saga/radical.pilot.micro/ve/local/lib/python2.7/site-packages/radical/pilot/controller/..//radical.pilot-v0.37.10-168-gc03f841-experiments-micro.tar.gz' to sandbox (gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/).", 
+                    "timestamp": 1446996036.32817
+                }, 
+                {
+                    "message": "Copying CA certificate bundle 'file://localhost//home/merzky/saga/radical.pilot.micro/ve/lib/python2.7/site-packages/radical/pilot/bootstrapper/cacert.pem.gz' to sandbox (gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/).", 
+                    "timestamp": 1446996049.396073
+                }, 
+                {
+                    "message": "Writing agent configuration to file '/tmp/rp_agent_cfg_rpSLPR.json'.", 
+                    "timestamp": 1446996057.130328
+                }, 
+                {
+                    "message": "Copying agent configuration file 'file://localhost/tmp/rp_agent_cfg_rpSLPR.json' to sandbox (gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/).", 
+                    "timestamp": 1446996057.132173
+                }, 
+                {
+                    "message": "Submitting SAGA job with description: {'Project': 'gkd', 'Executable': '/bin/bash', 'TotalPhysicalMemory': None, 'WorkingDirectory': '/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/', 'Queue': 'debug', 'Environment': {'RADICAL_PILOT_PROFILE': 'TRUE'}, 'WallTimeLimit': 10, 'Arguments': ['-l bootstrap_1.sh', \" -d 'radical.utils-v0.37-1-gcf03063-feature-log-report-level.tar.gz:saga-python-0.37.tar.gz:radical.pilot-v0.37.10-168-gc03f841-experiments-micro.tar.gz' -m 'create' -p 'pilot.0000' -r 'local' -s 'rp.session.cameo.merzky.016747.0104' -v '/scratch/sciteam/merzky/radical.pilot.sandbox/ve_bw' -a 'multicore' -e 'module switch PrgEnv-cray PrgEnv-gnu' -e 'module load bw-python' -e 'module use --append /u/sciteam/marksant/privatemodules' -e 'module load openmpi/STATIC' -e 'export LIBRARY_PATH=$LIBRARY_PATH:$BWP_INTERP_LIBRARY_PATH' -w 'export HOME=$HOME' -w 'export PATH=$PATH' -w 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH' -f 'BIND_ADDRESS' -h '54.221.194.147:24242' -t 'ipogif0'\"], 'ProcessesPerHost': None, 'Error': 'bootstrap_1.err', 'Output': 'bootstrap_1.out', 'TotalCPUCount': 250}", 
+                    "timestamp": 1446996087.660355
+                }, 
+                {
+                    "message": "SAGA job submitted with job id [torque+gsissh://bw.ncsa.illinois.edu]-[2572827]", 
+                    "timestamp": 1446996098.75707
+                }, 
+                {
+                    "message": "FAILED startup", 
+                    "timestamp": 1446996240.672723
+                }, 
+                {
+                    "message": "real 1446996240.709515 sec | user 0.512 sec | system 1.184 sec | mem 37356.00 kB", 
+                    "timestamp": 1446996240.672723
+                }
+            ], 
+            "logfile": null, 
+            "nodes": null, 
+            "output_transfer_finished": null, 
+            "output_transfer_started": null, 
+            "pilotmanager": "pmgr.0000", 
+            "saga_job_id": "[torque+gsissh://bw.ncsa.illinois.edu]-[2572827]", 
+            "sagajobid": null, 
+            "sandbox": "gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/", 
+            "started": null, 
+            "state": "Failed", 
+            "statehistory": [
+                {
+                    "state": "PendingLaunch", 
+                    "timestamp": 1446995983.48043
+                }, 
+                {
+                    "state": "Launching", 
+                    "timestamp": 1446995984.151961
+                }, 
+                {
+                    "state": "PendingActive", 
+                    "timestamp": 1446996098.75721
+                }, 
+                {
+                    "state": "Failed", 
+                    "timestamp": 1446996240.672723
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1446995983.48043, 
+            "unit_ids": [
+                "unit.000000"
+            ], 
+            "unitmanager": "umgr.0000"
+        }
+    ], 
+    "pmgr": [
+        {
+            "_id": "pmgr.0000", 
+            "data": {}, 
+            "pilot_launcher_workers": 1
+        }
+    ], 
+    "session": {
+        "_id": "rp.session.cameo.merzky.016747.0104", 
+        "connected": 1446995977.379736, 
+        "created": 1446995977.379736, 
+        "name": "rp.session.cameo.merzky.016747.0104"
+    }, 
+    "umgr": [
+        {
+            "_id": "umgr.0000", 
+            "input_transfer_workers": 2, 
+            "output_transfer_workers": 2, 
+            "scheduler": "round_robin"
+        }
+    ], 
+    "unit": [
+        {
+            "Agent_Input_Directives": [
+                {
+                    "action": "Link", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "staging:///f1", 
+                    "state": "Pending", 
+                    "target": "f1"
+                }
+            ], 
+            "Agent_Input_Status": "Pending", 
+            "Agent_Output_Directives": [
+                {
+                    "action": "Copy", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f1", 
+                    "state": "Pending", 
+                    "target": "staging:///f1.bak"
+                }
+            ], 
+            "Agent_Output_Status": "New", 
+            "FTW_Input_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "/etc/group", 
+                    "state": "Pending", 
+                    "target": "f2"
+                }
+            ], 
+            "FTW_Input_Status": "Pending", 
+            "FTW_Output_Directives": [
+                {
+                    "action": "Transfer", 
+                    "flags": [
+                        "CreateParents", 
+                        "SkipFailed"
+                    ], 
+                    "priority": 0, 
+                    "source": "f2", 
+                    "state": "Pending", 
+                    "target": "f2.bak"
+                }
+            ], 
+            "FTW_Output_Status": "New", 
+            "_id": "unit.000000", 
+            "callbackhistory": [
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446996011.779378
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446996022.952501
+                }, 
+                {
+                    "state": "Canceled", 
+                    "timestamp": 1446996242.371625
+                }
+            ], 
+            "control": "umgr", 
+            "description": {
+                "arguments": [], 
+                "cleanup": false, 
+                "cores": 1, 
+                "environment": null, 
+                "executable": "/bin/true", 
+                "input_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "/etc/group", 
+                        "target": "f2"
+                    }, 
+                    {
+                        "action": "Link", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "staging:///f1", 
+                        "target": "f1"
+                    }
+                ], 
+                "kernel": null, 
+                "mpi": false, 
+                "name": null, 
+                "output_staging": [
+                    {
+                        "action": "Transfer", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f2", 
+                        "target": "f2.bak"
+                    }, 
+                    {
+                        "action": "Copy", 
+                        "flags": [
+                            "CreateParents", 
+                            "SkipFailed"
+                        ], 
+                        "priority": 0, 
+                        "source": "f1", 
+                        "target": "staging:///f1.bak"
+                    }
+                ], 
+                "post_exec": null, 
+                "pre_exec": null, 
+                "restartable": false, 
+                "stderr": null, 
+                "stdout": null
+            }, 
+            "exec_locs": null, 
+            "exit_code": null, 
+            "finished": null, 
+            "log": [
+                {
+                    "message": "Scheduled for data transfer to ComputePilot pilot.0000.", 
+                    "timestamp": 1446996009.646117
+                }, 
+                {
+                    "message": "push unit to agent after ftw staging", 
+                    "timestamp": 1446996020.827562
+                }, 
+                {
+                    "message": "Pilot 'pilot.0000' has terminated with state 'Failed'. CU canceled.", 
+                    "timestamp": 1446996241.696262
+                }
+            ], 
+            "pilot": "pilot.0000", 
+            "pilot_sandbox": "gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000/", 
+            "restartable": false, 
+            "sandbox": "gsisftp://bw.ncsa.illinois.edu/scratch/sciteam/merzky/radical.pilot.sandbox/rp.session.cameo.merzky.016747.0104-pilot.0000//unit.000000", 
+            "started": null, 
+            "state": "Canceled", 
+            "statehistory": [
+                {
+                    "state": "Scheduling", 
+                    "timestamp": 1446996007.622603
+                }, 
+                {
+                    "state": "StagingInput", 
+                    "timestamp": 1446996010.6368
+                }, 
+                {
+                    "state": "AgentStagingInputPending", 
+                    "timestamp": 1446996010.6368
+                }
+            ], 
+            "stderr": null, 
+            "stdout": null, 
+            "submitted": 1446996007.622603, 
+            "unitmanager": "umgr.0000"
+        }
+    ]
+}
