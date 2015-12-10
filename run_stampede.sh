@@ -4,11 +4,12 @@
 # We will then run that config repeatedly (for stats) and collect the profles.
 COMPONENTS='inp'
 COMPONENTS='out'
-COMPONENTS='exe'
 COMPONENTS='inp sch exe out'
+COMPONENTS='exe'
+COMPONENTS='out'
 
 # number of repetitions
-REPS=1
+REPS=2
 
 # target resource : cores per node
 RESOURCES='stampede:16 local'
@@ -30,15 +31,15 @@ SIZES='256: 512: 1024: 2048:'
 SIZES='256:'
 SIZES='250:compute'
 SIZES='250:compute 500:compute 1000:compute'
-SIZES='250:normal 500:normal 1000:normal'
+SIZES='500:normal'
 
 # number of components per sub agent
-WORKERS='1'
 WORKERS='1 2 4 8'
+WORKERS='1 8'
 
 # number of sub agents to use
-AGENTS='2'
 AGENTS='1 2 4 8'
+AGENTS='1 8'
 
 # agent layout to use
 # simple_n describes a layout where n sub-agents all have a full set of

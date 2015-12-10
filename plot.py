@@ -56,7 +56,7 @@ def create_event_filter():
 
 # ------------------------------------------------------------------------------
 #
-def read_experiments():
+def read_experiments(exp_index):
 
     idx=0
     with open(exp_index, 'r') as f:
@@ -91,7 +91,29 @@ def read_experiments():
 
 # ------------------------------------------------------------------------------
 #
+def translate_label(label):
+
+    c, s, d, a, w, r, i = label.split()
+
+    ctype = {'exe' : 'execute',
+             'inp' : 'input',
+             'out' : 'output',
+             'sch' : 'sched.'}.get(c, '')
+
+    if ctype: loc = "%-8s [%-7s]" % (r, ctype)
+    else    : loc = "%-8s" % r
+
+    ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
+
+    return ret
+
+
+# ------------------------------------------------------------------------------
+#
 def plot_experiments(exp_frames, figdir):
+
+    import numpy  as np
+    import pandas as pd
 
     event_filter = create_event_filter()
     
@@ -114,22 +136,46 @@ def plot_experiments(exp_frames, figdir):
             rp.utils.add_event_count (frame, tgt='events', spec=event_filter[state]['in'])
             rp.utils.add_concurrency (frame, tgt='conc'  , spec=event_filter[state])
             rp.utils.calibrate_frame (frame,               spec=event_filter[state]['in'])
-        
-            plot_frames.append([frame, label])
+            
+            frame['t_idx'] = pd.to_datetime(frame['time'], unit='us')
+            frame = frame.set_index(pd.DatetimeIndex(frame['t_idx']))
+
+            samples = frame[['t_idx', 'time', 'rate', 'events', 'conc']].dropna()
+
+          # print "0 %s" % label
+          # print samples
+          # print "1 ---------"
+          # print repr(samples)
+          # print "2 ---------"
+          # print samples.dtypes
+          # print "3 ---------"
+          # print samples.ix
+          # print "4 ---------"
+          # print type(samples)
+          # print "5 ---------"
+          # print
+          # print
+
+            plot_frames.append([samples, translate_label(label)])
+
+        cmap = {'stampede' : 'red'  ,
+                'comet'    : 'green',
+                'bw'       : 'blue' }
             
         # create plots for each type (rate, events, concurrency)
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_unit_throughput" % exp, legend=True,
+                       title="%s_unit_throughput" % exp, legend=True, cmap=None,
                        axis=[['time', 'time (s)'],
                              ['rate', "rate units/s"]])
         
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_unit_concurrency" % exp, legend=True,
+                       title="%s_unit_concurrency" % exp, legend=True, cmap=None,
                        axis=[['time', 'time (s)'],
                              ['conc', '#concurrent units']])
 
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_state_transitions" % exp, legend=True,
+                       title="%s_state_transitions" % exp, legend=True, cmap=None,
+                       legend_pos='upper left',
                        axis=[['time',  'time (s)'],
                              ['events', "#events"]])
         
@@ -177,7 +223,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         exp_index = sys.argv[1]
 
-    tgt = '.'.join(exp_index.split('.')[:-1])
+    tgt = '.'.join(os.path.basename(exp_index).split('.')[:-1])
     
     figdir = "%s/plots/%s.plots" % (base, tgt)
     try:
@@ -185,7 +231,7 @@ if __name__ == "__main__":
     except OSError:
         pass
 
-    exp_frames = read_experiments()
+    exp_frames = read_experiments(exp_index)
     plot_experiments(exp_frames, figdir)
 
 

@@ -10,7 +10,7 @@ do
             do
                f="sids/$c.$s.$a.$w.sids"
                grep "$c :  $s :  0 :  $a :  $w : " experiment.sids > $f
-               test -s $f || rm $f
+               test -s $f || rm -f $f
            done
        done
 
@@ -18,14 +18,14 @@ do
        do
            f="sids/$c.$s.$r.sids"
            grep "$c : $s : " experiment.sids | grep $r > $f
-           test -s $f || rm $f
+           test -s $f || rm -f $f
        done
    done
 done
 
 export TIMEFORMAT="r:%lR  u:%lU  s:%lS"
 unset `env | grep VERBOSE | cut -f 1 -d =`
-rm    plot_all.lst
+rm -f plot_all.lst
 touch plot_all.lst
 for sid in sids/*.sids
 do
@@ -41,13 +41,13 @@ do
         continue
     else
         printf "======= %2d != %2d : $sid\n" $new_len $old_len
-        echo ./plot.py $sid >> plot_all.lst
+        echo $sid >> plot_all.lst
         echo "$new_len" > $sid.len
     fi
 
 done
 
 cat plot_all.lst
-echo "plotting `wc -l plot_all.lst` times"
+echo "plotting `wc -l plot_all.lst | cut -f 1 -d ' '` sids"
 time parallel ./plot.py < plot_all.lst
 

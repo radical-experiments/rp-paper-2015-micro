@@ -136,35 +136,37 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
 
             pilot = pmgr.submit_pilots(pdesc)
 
-            input_sd_pilot = {
-                    'source': 'file:///etc/passwd',
-                    'target': 'staging:///f1',
-                    'action': rp.TRANSFER
-                    }
-            pilot.stage_in (input_sd_pilot)
+          # input_sd_pilot = {
+          #         'source': 'file:///etc/passwd',
+          #         'target': 'staging:///f1',
+          #         'action': rp.TRANSFER
+          #         }
+          # pilot.stage_in (input_sd_pilot)
             pilots.append (pilot)
 
 
         umgr = rp.UnitManager(session=session, scheduler=scheduler)
         umgr.add_pilots(pilots)
 
-        input_sd_umgr   = {'source':'/etc/group',    'target': 'f2',                'action': rp.TRANSFER}
-        input_sd_agent  = {'source':'staging:///f1', 'target': 'f1',                'action': rp.LINK}
-        output_sd_agent = {'source':'f1',            'target': 'staging:///f1.bak', 'action': rp.COPY}
-        output_sd_umgr  = {'source':'f2',            'target': 'f2.bak',            'action': rp.TRANSFER}
+      # input_sd_umgr   = {'source':'/etc/group',    'target': 'f2',                'action': rp.TRANSFER}
+      # input_sd_agent  = {'source':'staging:///f1', 'target': 'f1',                'action': rp.LINK}
+      # output_sd_agent = {'source':'f1',            'target': 'staging:///f1.bak', 'action': rp.COPY}
+      # output_sd_umgr  = {'source':'f2',            'target': 'f2.bak',            'action': rp.TRANSFER}
 
         cuds = list()
         for unit_count in range(0, n_units):
             cud = rp.ComputeUnitDescription()
             cud.executable     = cu_load['executable']
             cud.arguments      = cu_load['arguments']
+            cud.environment    = cu_load['environment']
             cud.cores          = cu_load['cores']
-            cud.input_staging  = [ input_sd_umgr,  input_sd_agent]
-            cud.output_staging = [output_sd_umgr, output_sd_agent]
+          # cud.input_staging  = [ input_sd_umgr,  input_sd_agent]
+          # cud.output_staging = [output_sd_umgr, output_sd_agent]
             cuds.append(cud)
 
         units = umgr.submit_units(cuds)
 
+      # time.sleep(300)
         umgr.wait_units()
 
       # os.system ("radicalpilot-stats -m stat,plot -s %s > %s.stat" % (session.uid, session_name))
@@ -181,12 +183,13 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
         # corresponding KeyboardInterrupt exception for shutdown.  We also catch
         # SystemExit (which gets raised if the main threads exits for some other
         # reason).
+        print 'got exit'
         pass
 
     finally:
         # always clean up the session, no matter if we caught an exception or
         # not.
-        time.sleep (10) # give time to finish clones...
+        print 'closing'
         session.close (cleanup=False) # keep the DB entries...
 
 
