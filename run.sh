@@ -22,7 +22,7 @@ tmp='./tmp.dat'
 # make sure the number is large enough to keep the components busy for some
 # seconds -- otherwise we don't get decent 'frequency' (which is defined per
 # full second)
-n=10000
+n=100
 
 for res in $RESOURCES
 do

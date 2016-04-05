@@ -84,7 +84,7 @@ def read_experiments(exp_index):
     pprint.pprint(experiments)
     
     exp_frames = rpu.get_experiment_frames(experiments, exp_data)
-    # pprint.pprint(exp_frames)
+  # pprint.pprint(exp_frames)
 
     return exp_frames
 
@@ -103,7 +103,12 @@ def translate_label(label):
     if ctype: loc = "%-8s [%-7s]" % (r, ctype)
     else    : loc = "%-8s" % r
 
-    ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
+  # ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
+    ret = "%-8s" % r
+  # ret = "%-3s" % r
+
+  # n = int(a) * int(w)
+  # ret = " %2d " % int(a)
 
     return ret
 
@@ -117,7 +122,7 @@ def plot_experiments(exp_frames, figdir):
 
     event_filter = create_event_filter()
     
-    for exp in sorted(exp_frames.keys()):
+    for exp in exp_frames.keys():
         print "plotting '%s'" % exp
     
         # these are the frames we want to plot for this experiment
@@ -156,25 +161,36 @@ def plot_experiments(exp_frames, figdir):
           # print
           # print
 
+            
             plot_frames.append([samples, translate_label(label)])
 
         cmap = {'stampede' : 'red'  ,
                 'comet'    : 'green',
                 'bw'       : 'blue' }
             
+      # cmap = { ' 1 ' : 'red'    ,
+      #          ' 2 ' : 'green'  ,
+      #          ' 4 ' : 'blue'   ,
+      #          ' 8 ' : 'black'  ,
+      #         ' 16 ' : 'orange' ,
+      #         ' 32 ' : 'magenta'}
+            
         # create plots for each type (rate, events, concurrency)
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_unit_throughput" % exp, legend=True, cmap=None,
+                     # title="%s_unit_throughput" % exp, 
+                       legend=True, cmap=cmap,
                        axis=[['time', 'time (s)'],
                              ['rate', "rate units/s"]])
         
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_unit_concurrency" % exp, legend=True, cmap=None,
+                     # title="%s_unit_concurrency" % exp, 
+                       legend=True, cmap=cmap,
                        axis=[['time', 'time (s)'],
                              ['conc', '#concurrent units']])
 
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
-                       title="%s_state_transitions" % exp, legend=True, cmap=None,
+                     # title="%s_state_transitions" % exp, 
+                       legend=True, cmap=cmap,
                        legend_pos='upper left',
                        axis=[['time',  'time (s)'],
                              ['events', "#events"]])
