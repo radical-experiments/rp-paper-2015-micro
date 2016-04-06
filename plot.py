@@ -186,14 +186,14 @@ def plot_experiments(exp_frames, figdir):
                      # title="%s_unit_concurrency" % exp, 
                        legend=True, cmap=cmap,
                        axis=[['time', 'time (s)'],
-                             ['conc', '#concurrent units']])
+                             ['conc', 'number of concurrent units']])
 
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
                      # title="%s_state_transitions" % exp, 
                        legend=True, cmap=cmap,
                        legend_pos='upper left',
                        axis=[['time',  'time (s)'],
-                             ['events', "#events"]])
+                             ['events', "number of events"]])
         
     
       # for frame, label in exp_frames[exp]:
@@ -232,6 +232,7 @@ def plot_experiments(exp_frames, figdir):
 if __name__ == "__main__":
 
     base        = "/home/merzky/saga/experiments/rp-paper-2015-micro"
+    base        = "/home/merzky/radical/rp-paper-2015-micro"
     exp_data    = "%s/data/"            % (base)
     exp_index   = "%s/experiment.sids"  % (base)
     experiments = dict()
