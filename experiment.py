@@ -38,8 +38,8 @@ RESOURCES = {'local' : {
              
              'stampede' : {
                  'resource' : 'xsede.stampede',
-                 'project'  : 'TG-MCB150124',
-               # 'project'  : 'TG-MCB090174',
+               # 'project'  : 'TG-MCB150124',
+                 'project'  : 'TG-MCB090174',
                  'queue'    : 'normal',
                  'schema'   : None,
                  },
@@ -153,21 +153,24 @@ def run_experiment(n_cores, n_units, resources, runtime, cu_load, agent_cfg,
       # output_sd_agent = {'source':'f1',            'target': 'staging:///f1.bak', 'action': rp.COPY}
       # output_sd_umgr  = {'source':'f2',            'target': 'f2.bak',            'action': rp.TRANSFER}
 
-        cuds = list()
-        for unit_count in range(0, n_units):
-            cud = rp.ComputeUnitDescription()
-            cud.executable     = cu_load['executable']
-            cud.arguments      = cu_load['arguments']
-            cud.environment    = cu_load['environment']
-            cud.cores          = cu_load['cores']
-          # cud.input_staging  = [ input_sd_umgr,  input_sd_agent]
-          # cud.output_staging = [output_sd_umgr, output_sd_agent]
-            cuds.append(cud)
+        generations = 1
+        for gen in range(generations):
 
-        units = umgr.submit_units(cuds)
+            cuds = list()
+            for unit_count in range(0, n_units):
+                cud = rp.ComputeUnitDescription()
+                cud.executable     = cu_load['executable']
+                cud.arguments      = cu_load['arguments']
+                cud.environment    = cu_load['environment']
+                cud.cores          = cu_load['cores']
+              # cud.input_staging  = [ input_sd_umgr,  input_sd_agent]
+              # cud.output_staging = [output_sd_umgr, output_sd_agent]
+                cuds.append(cud)
 
-      # time.sleep(300)
-        umgr.wait_units()
+            units = umgr.submit_units(cuds)
+
+          # time.sleep(300)
+            umgr.wait_units()
 
       # os.system ("radicalpilot-stats -m stat,plot -s %s > %s.stat" % (session.uid, session_name))
 
