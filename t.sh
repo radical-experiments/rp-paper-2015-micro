@@ -2,8 +2,8 @@
 # export RP_PLOT_LIMIT=1000
 # unset RP_PLOT_LIMIT
 
-  time ./plot.py sids/exe.1000.stampede.sids
-# time ./plot.py sids/out.1000.bw.sids
+# time ./plot.py sids/exe.1000.stampede.sids
+  time ./plot.py sids/out.1000.bw.sids
 
 # time ./plot.py sids/exe.500.1.1.sids
 # time ./plot.py sids/inp.500.1.1.sids
