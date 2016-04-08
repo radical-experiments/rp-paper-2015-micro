@@ -107,7 +107,7 @@ def translate_label(label):
   # ret = "%-10s" % r
 
     n = int(a) * int(w)
-    ret = " %2d" % int(n)
+    ret = " %2d " % int(n)
 
     return ret
 
