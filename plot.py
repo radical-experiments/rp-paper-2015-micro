@@ -107,7 +107,7 @@ def translate_label(label):
   # ret = "%-10s" % r
 
     n = int(a) * int(w)
-    ret = " %2d Component Instances" % int(n)
+    ret = " %2d" % int(n)
 
     return ret
 
@@ -163,16 +163,15 @@ def plot_experiments(exp_frames, figdir):
             
             plot_frames.append([samples, translate_label(label)])
 
-        cmap = {'Comet'       : 'green',
-                'Stampede'    : 'red'  ,
-                'Blue Waters' : 'blue' }
-            
-        cmap = { ' 1 ' : 'red'    ,
-                 ' 2 ' : 'green'  ,
-                 ' 4 ' : 'blue'   ,
-                 ' 8 ' : 'black'  ,
-                ' 16 ' : 'orange' ,
-                ' 32 ' : 'magenta'}
+        cmap = {'Comet'       : 'green'  ,
+                'Stampede'    : 'red'    ,
+                'Blue Waters' : 'blue'   ,
+                ' 1 '         : 'red'    ,
+                ' 2 '         : 'green'  ,
+                ' 4 '         : 'blue'   ,
+                ' 8 '         : 'black'  ,
+                ' 16 '        : 'orange' ,
+                ' 32 '        : 'magenta'}
             
         # create plots for each type (rate, events, concurrency)
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
