@@ -103,11 +103,15 @@ def translate_label(label):
     if ctype: loc = "%-8s [%-7s]" % (r, ctype)
     else    : loc = "%-8s" % r
 
-  # ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
-  # ret = "%-10s" % r
+    R = {'bw'       : 'Blue Waters', 
+         'stampede' : 'Stampede',
+         'comet'    : 'Comet'}
 
-    n = int(a) * int(w)
-    ret = " %2d " % int(a)
+  # ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
+    ret = "%-10s" % R[r]
+
+  # n = int(a) * int(w)
+  # ret = " %2d " % int(a)
 
     return ret
 

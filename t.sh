@@ -3,9 +3,9 @@
 # unset RP_PLOT_LIMIT
 
 # time ./plot.py sids/exe.1000.stampede.sids
-  time ./plot.py sids/out.1000.bw.sids
+# time ./plot.py sids/out.1000.bw.sids
 
-# time ./plot.py sids/exe.500.1.1.sids
+  time ./plot.py sids/exe.500.1.1.sids
 # time ./plot.py sids/inp.500.1.1.sids
 # time ./plot.py sids/inp.500.4.4.sids
 # time ./plot.py sids/out.500.1.1.sids
