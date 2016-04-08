@@ -5,11 +5,11 @@
 # time ./plot.py sids/exe.1000.stampede.sids
 # time ./plot.py sids/out.1000.bw.sids
 
-  time ./plot.py sids/exe.500.1.1.sids
-# time ./plot.py sids/inp.500.1.1.sids
-# time ./plot.py sids/inp.500.4.4.sids
-# time ./plot.py sids/out.500.1.1.sids
-# time ./plot.py sids/sch.500.1.1.sids
+# time ./plot.py sids/exe.500.1.1.sids
+  time ./plot.py sids/inp.500.1.1.sids
+  time ./plot.py sids/inp.500.4.4.sids
+  time ./plot.py sids/out.500.1.1.sids
+  time ./plot.py sids/sch.500.1.1.sids
 
 
 cp -v plots/exe.1000.stampede.plots/Time_s_Rate_units_s_.pdf       ~/papers/radical-pilot/sc16/figures/micro_1000_stampede_exe_unit_throughput.pdf
