@@ -104,11 +104,10 @@ def translate_label(label):
     else    : loc = "%-8s" % r
 
   # ret = "%s: %3d SA, %3d CI, %4d cores" % (loc, int(a), int(w), int(s))
-    ret = "%-8s" % r
-  # ret = "%-3s" % r
+  # ret = "%-10s" % r
 
-  # n = int(a) * int(w)
-  # ret = " %2d " % int(a)
+    n = int(a) * int(w)
+    ret = " %2d Component Instances" % int(n)
 
     return ret
 
@@ -164,36 +163,36 @@ def plot_experiments(exp_frames, figdir):
             
             plot_frames.append([samples, translate_label(label)])
 
-        cmap = {'stampede' : 'red'  ,
-                'comet'    : 'green',
-                'bw'       : 'blue' }
+        cmap = {'Comet'       : 'green',
+                'Stampede'    : 'red'  ,
+                'Blue Waters' : 'blue' }
             
-      # cmap = { ' 1 ' : 'red'    ,
-      #          ' 2 ' : 'green'  ,
-      #          ' 4 ' : 'blue'   ,
-      #          ' 8 ' : 'black'  ,
-      #         ' 16 ' : 'orange' ,
-      #         ' 32 ' : 'magenta'}
+        cmap = { ' 1 ' : 'red'    ,
+                 ' 2 ' : 'green'  ,
+                 ' 4 ' : 'blue'   ,
+                 ' 8 ' : 'black'  ,
+                ' 16 ' : 'orange' ,
+                ' 32 ' : 'magenta'}
             
         # create plots for each type (rate, events, concurrency)
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
                      # title="%s_unit_throughput" % exp, 
                        legend=True, cmap=cmap,
-                       axis=[['time', 'time (s)'],
-                             ['rate', "rate units/s"]])
+                       axis=[['time', 'Time (s)'],
+                             ['rate', "Rate (units/s)"]])
         
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
                      # title="%s_unit_concurrency" % exp, 
                        legend=True, cmap=cmap,
-                       axis=[['time', 'time (s)'],
-                             ['conc', 'number of concurrent units']])
+                       axis=[['time', 'Time (s)'],
+                             ['conc', 'Concurrent Units']])
 
         rp.utils.frame_plot(plot_frames, figdir=figdir, logx=False, logy=False,
                      # title="%s_state_transitions" % exp, 
                        legend=True, cmap=cmap,
                        legend_pos='upper left',
-                       axis=[['time',  'time (s)'],
-                             ['events', "number of events"]])
+                       axis=[['time',  'Time (s)'],
+                             ['events', "Number of Events"]])
         
     
       # for frame, label in exp_frames[exp]:
